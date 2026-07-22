@@ -49,6 +49,22 @@
 <h2 style="text-align:center;font-family:'Sora',sans-serif;font-size:1.05rem;margin:0 0 18px;">Profile picture</h2>
 <div class="pfp-grid" id="pfpGrid"></div>
 
+<h2 style="text-align:center;font-family:'Sora',sans-serif;font-size:1.05rem;margin:0 0 18px;">Bio</h2>
+<div class="pfp-grid" style="grid-template-columns: 1fr; max-width: 420px;">
+  <div class="pfp-block" style="text-align:left;">
+    <textarea id="bioText" readonly style="width:100%;min-height:100px;background:#0E1116;color:#F3F1EC;border:1px solid #262C36;border-radius:8px;padding:12px;font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;line-height:1.6;resize:vertical;">🛠️ Web apps · bots · games · tools
+Idea today → live today
+If you can think it, I can build it</textarea>
+    <button class="copy-btn" style="width:100%;margin-top:10px;" onclick="
+      navigator.clipboard.writeText(document.getElementById('bioText').value).then(() => {
+        this.textContent = 'Copied!';
+        setTimeout(() => { this.textContent = 'Copy bio'; }, 1500);
+      });
+    ">Copy bio</button>
+    <div class="pfp-label" style="margin-top:10px;">Website field: builttoday.github.io</div>
+  </div>
+</div>
+
 <h2 style="text-align:center;font-family:'Sora',sans-serif;font-size:1.05rem;margin:0 0 18px;">Posts</h2>
 <div class="grid" id="postGrid"></div>
 
