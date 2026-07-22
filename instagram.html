@@ -321,10 +321,13 @@ function buildPostBlock(post) {
 
 /* ============================== PROFILE PICTURE ============================== */
 const PFP_VARIANTS = [
-  { id: "solid", label: "Bold monogram" },
-  { id: "ring", label: "Monogram with ring" },
+  { id: "solid", label: "Stacked wordmark" },
+  { id: "ring", label: "Stacked wordmark with ring" },
 ];
 
+// Same two-tone treatment as the site's own nav logo: "Built" in white,
+// "Today" in the accent orange -- not a "BT" monogram, which reads too much
+// like an existing telecom logo at a glance.
 function drawProfilePic(canvas, variant) {
   const ctx = canvas.getContext("2d");
   const W = 1080, H = 1080;
@@ -340,18 +343,22 @@ function drawProfilePic(canvas, variant) {
   ctx.textBaseline = "middle";
 
   if (variant === "solid") {
+    ctx.font = "800 190px 'Sora'";
+    ctx.fillStyle = "#F3F1EC";
+    ctx.fillText("Built", W / 2, H / 2 - 110);
     ctx.fillStyle = "#FF7A33";
-    ctx.font = "800 480px 'Sora'";
-    ctx.fillText("BT", W / 2, H / 2 + 40);
+    ctx.fillText("Today", W / 2, H / 2 + 110);
   } else if (variant === "ring") {
     ctx.beginPath();
-    ctx.arc(W / 2, H / 2, 430, 0, Math.PI * 2);
+    ctx.arc(W / 2, H / 2, 480, 0, Math.PI * 2);
     ctx.strokeStyle = "#FF7A33";
-    ctx.lineWidth = 16;
+    ctx.lineWidth = 14;
     ctx.stroke();
+    ctx.font = "800 165px 'Sora'";
     ctx.fillStyle = "#F3F1EC";
-    ctx.font = "800 400px 'Sora'";
-    ctx.fillText("BT", W / 2, H / 2 + 30);
+    ctx.fillText("Built", W / 2, H / 2 - 95);
+    ctx.fillStyle = "#FF7A33";
+    ctx.fillText("Today", W / 2, H / 2 + 95);
   }
 }
 
@@ -401,7 +408,8 @@ async function init() {
       await document.fonts.load("800 92px 'Sora'");
       await document.fonts.load("700 30px 'Sora'");
       await document.fonts.load("500 36px 'IBM Plex Sans'");
-      await document.fonts.load("800 480px 'Sora'");
+      await document.fonts.load("800 190px 'Sora'");
+      await document.fonts.load("800 165px 'Sora'");
       await document.fonts.ready;
     } catch (e) { /* fonts unavailable -- canvas will fall back to default sans-serif */ }
   }
