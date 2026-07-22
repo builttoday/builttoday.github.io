@@ -99,6 +99,15 @@
   }
   .contact-box h2 { font-size: 1.9rem; margin: 0 0 12px; }
   .contact-box p { color: var(--ink-soft); max-width: 480px; margin: 0 auto 28px; }
+  .contact-form { max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; text-align: left; }
+  .contact-form input, .contact-form textarea {
+    background: var(--bg); border: 1px solid var(--line); color: var(--ink); border-radius: 10px;
+    padding: 12px 14px; font-family: inherit; font-size: 0.92rem; width: 100%;
+  }
+  .contact-form textarea { min-height: 110px; resize: vertical; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--ink-soft); }
+  .contact-form button { width: 100%; border: none; cursor: pointer; }
+  .cf-status { text-align: center; font-size: 0.85rem; min-height: 1.2em; margin: 0; }
 
   footer.note { text-align: center; color: var(--ink-soft); font-size: 0.8rem; padding: 40px 0; }
   footer.note a { color: var(--ink-soft); text-decoration: underline; }
@@ -116,7 +125,7 @@
     <a class="logo" href="index.html" style="text-decoration:none;">Built<span>Today</span></a>
     <div style="display:flex;align-items:center;gap:18px;">
       <a href="pricing.html" style="text-decoration:none;color:var(--ink-soft);font-size:0.88rem;font-weight:600;">Pricing</a>
-      <a class="nav-cta" href="mailto:builttoday@yahoo.com?subject=Let%27s%20build%20something">Get in touch</a>
+      <a class="nav-cta" href="#contact">Get in touch</a>
     </div>
   </div>
 </header>
@@ -129,7 +138,7 @@
       real, working software you can click around in, not a mockup or a six-week proposal. Want something changed?
       That's usually minutes away too.</p>
     <div class="cta-row">
-      <a class="btn-primary" href="mailto:builttoday@yahoo.com?subject=Let%27s%20build%20something">Tell me what you need →</a>
+      <a class="btn-primary" href="#contact">Tell me what you need →</a>
       <a class="btn-ghost" href="#proof">See what's been built</a>
     </div>
   </div>
@@ -252,10 +261,40 @@
     <div class="contact-box">
       <h2>Have something in mind?</h2>
       <p>Send over what you're thinking — even a rough idea is enough to start. Scope and pricing get worked out together, per project.</p>
-      <a class="btn-primary" href="mailto:builttoday@yahoo.com?subject=Let%27s%20build%20something">Email me →</a>
+      <form class="contact-form" id="contactForm">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" placeholder="What are you thinking of building?" required></textarea>
+        <button type="submit" class="btn-primary" id="cfSubmitBtn">Send →</button>
+        <p class="cf-status" id="cfStatus"></p>
+      </form>
     </div>
   </div>
 </section>
+<script>
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById("cfSubmitBtn");
+  const status = document.getElementById("cfStatus");
+  btn.disabled = true; btn.textContent = "Sending...";
+  status.style.color = "var(--ink-soft)"; status.textContent = "";
+  try {
+    const resp = await fetch("https://formspree.io/f/mykrdyvj", {
+      method: "POST", body: new FormData(form), headers: { "Accept": "application/json" },
+    });
+    if (!resp.ok) throw new Error("send failed");
+    status.style.color = "var(--good)";
+    status.textContent = "Sent! I'll get back to you soon.";
+    form.reset();
+    btn.textContent = "Sent ✓";
+  } catch (err) {
+    status.style.color = "#E8807C";
+    status.textContent = "Something went wrong — email builttoday@yahoo.com directly instead.";
+    btn.disabled = false; btn.textContent = "Send →";
+  }
+});
+</script>
 
 <footer class="note">
   <div class="wrap">Built Today &middot; every project here was built the same way this page was.</div>

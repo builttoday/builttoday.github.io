@@ -92,6 +92,15 @@
   }
   .contact-box h2 { font-size: 1.7rem; margin: 0 0 12px; }
   .contact-box p { color: var(--ink-soft); max-width: 480px; margin: 0 auto 26px; }
+  .contact-form { max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; text-align: left; }
+  .contact-form input, .contact-form textarea {
+    background: var(--bg); border: 1px solid var(--line); color: var(--ink); border-radius: 10px;
+    padding: 12px 14px; font-family: inherit; font-size: 0.92rem; width: 100%;
+  }
+  .contact-form textarea { min-height: 110px; resize: vertical; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--ink-soft); }
+  .contact-form button { width: 100%; border: none; cursor: pointer; }
+  .cf-status { text-align: center; font-size: 0.85rem; min-height: 1.2em; margin: 0; }
   .btn-primary { background: var(--accent); color: #1A0E06; text-decoration: none; font-weight: 700; padding: 15px 26px; border-radius: 10px; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; }
 
   footer.note { text-align: center; color: var(--ink-soft); font-size: 0.8rem; padding: 40px 0; }
@@ -109,7 +118,7 @@
     <a class="logo" href="index.html">Built<span>Today</span></a>
     <div class="nav-right">
       <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-cta" href="mailto:builttoday@yahoo.com?subject=Let%27s%20talk%20pricing">Get a quote</a>
+      <a class="nav-cta" href="#contact">Get a quote</a>
     </div>
   </div>
 </header>
@@ -148,7 +157,7 @@
           <li><span class="check">✓</span>Fast follow-up changes</li>
         </ul>
         <div class="tier-examples">Think: <b>a tracker, a calculator, a landing page</b></div>
-        <a class="tier-cta" href="mailto:builttoday@yahoo.com?subject=Quick%20Build%20enquiry">Ask about this tier</a>
+        <a class="tier-cta" href="#contact" onclick="askAboutTier('Quick Build')">Ask about this tier</a>
       </div>
 
       <div class="tier-card mid">
@@ -162,7 +171,7 @@
           <li><span class="check">✓</span>Built and live in a day or two</li>
         </ul>
         <div class="tier-examples">Think: <b>a puzzle app, a workout app, a set of games</b></div>
-        <a class="tier-cta" href="mailto:builttoday@yahoo.com?subject=Full%20App%20enquiry">Ask about this tier</a>
+        <a class="tier-cta" href="#contact" onclick="askAboutTier('Full App')">Ask about this tier</a>
       </div>
 
       <div class="tier-card high">
@@ -177,7 +186,7 @@
         </ul>
         <div class="tier-examples">Think: <b>a full production studio, an automated system</b></div>
         <div class="hosting-note">Projects with a live backend carry a small ongoing hosting cost, separate from the build itself — covered upfront, never a surprise later.</div>
-        <a class="tier-cta" href="mailto:builttoday@yahoo.com?subject=Complex%20System%20enquiry">Ask about this tier</a>
+        <a class="tier-cta" href="#contact" onclick="askAboutTier('Complex System')">Ask about this tier</a>
       </div>
     </div>
   </div>
@@ -217,15 +226,50 @@
   </div>
 </section>
 
-<section style="border-bottom: none;">
+<section id="contact" style="border-bottom: none;">
   <div class="wrap">
     <div class="contact-box">
       <h2>Not sure which tier fits?</h2>
       <p>Send over what you're thinking. The first conversation is free, and it's usually enough to know exactly where it lands.</p>
-      <a class="btn-primary" href="mailto:builttoday@yahoo.com?subject=Let%27s%20talk%20pricing">Get a quote →</a>
+      <form class="contact-form" id="contactForm">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" id="cfMessage" placeholder="What are you thinking of building?" required></textarea>
+        <button type="submit" class="btn-primary" id="cfSubmitBtn">Send →</button>
+        <p class="cf-status" id="cfStatus"></p>
+      </form>
     </div>
   </div>
 </section>
+<script>
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById("cfSubmitBtn");
+  const status = document.getElementById("cfStatus");
+  btn.disabled = true; btn.textContent = "Sending...";
+  status.style.color = "var(--ink-soft)"; status.textContent = "";
+  try {
+    const resp = await fetch("https://formspree.io/f/mykrdyvj", {
+      method: "POST", body: new FormData(form), headers: { "Accept": "application/json" },
+    });
+    if (!resp.ok) throw new Error("send failed");
+    status.style.color = "var(--good)";
+    status.textContent = "Sent! I'll get back to you soon.";
+    form.reset();
+    btn.textContent = "Sent ✓";
+  } catch (err) {
+    status.style.color = "#E8807C";
+    status.textContent = "Something went wrong — email builttoday@yahoo.com directly instead.";
+    btn.disabled = false; btn.textContent = "Send →";
+  }
+});
+function askAboutTier(tierName) {
+  document.getElementById("cfMessage").value = "I'm interested in the " + tierName + " tier — ";
+  document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  document.getElementById("cfMessage").focus();
+}
+</script>
 
 <footer class="note">
   <div class="wrap">Built Today &middot; every project here was built the same way this page was.</div>
