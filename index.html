@@ -81,6 +81,13 @@
     font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 999px;
     width: fit-content; margin-bottom: 10px;
   }
+  .feature-card .tag-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+  .feature-card .tag-row .tag { margin-bottom: 0; }
+  .device-note {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 0.76rem; color: var(--ink-soft);
+    background: var(--bg); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px;
+    width: fit-content;
+  }
   .feature-card h3 { font-size: 1.35rem; margin: 0 0 10px; }
   .feature-card p { color: var(--ink-soft); margin: 0 0 16px; max-width: 560px; }
   .feature-card .link { color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.92rem; }
@@ -172,12 +179,29 @@
 
     <div class="feature-card">
       <div>
-        <span class="tag">Featured build</span>
+        <div class="tag-row">
+          <span class="tag">Featured build</span>
+          <span class="device-note">💻 Best on a laptop or desktop — not built for phones</span>
+        </div>
         <h3>Beat Studio</h3>
         <p>A full music production studio that runs entirely in the browser — step sequencer, piano roll, two synth
           engines, a drum kit, per-track mixer with FX, song arrangement with layered pattern mixes, voice recording
           with algorithmic autotune, and WAV export. No installs, no plugins, no subscriptions.</p>
         <a class="link" href="https://everything-sats.github.io/beat-studio/" target="_blank" rel="noopener">Open Beat Studio →</a>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div>
+        <div class="tag-row">
+          <span class="tag">Also built</span>
+          <span class="device-note">💻 Laptop or desktop only — needs Chrome</span>
+        </div>
+        <h3>Mixing Decks</h3>
+        <p>A free two-deck DJ mixer that runs entirely in the browser — load your own tracks, blend between decks on
+          a real crossfader, shape each channel with EQ, and lock the beat with tap tempo. Works offline once
+          loaded, no installs, no subscriptions.</p>
+        <a class="link" href="https://everything-sats.github.io/mixing-decks/" target="_blank" rel="noopener">Open Mixing Decks →</a>
       </div>
     </div>
 
