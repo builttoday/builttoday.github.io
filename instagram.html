@@ -32,13 +32,24 @@
     margin-top: 8px; background: transparent; border: 1px solid #262C36; color: #F3F1EC; padding: 8px 14px;
     border-radius: 8px; font-size: 0.8rem; cursor: pointer; font-weight: 600;
   }
+  .pfp-grid { max-width: 640px; margin: 0 auto 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .pfp-block { background: #171B22; border: 1px solid #262C36; border-radius: 16px; padding: 18px; text-align: center; }
+  .pfp-preview-row { display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 4px; }
+  .pfp-square canvas { width: 140px; height: 140px; border-radius: 10px; display: block; }
+  .pfp-round { width: 90px; height: 90px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+  .pfp-round canvas { width: 100%; height: 100%; display: block; }
+  .pfp-label { font-size: 0.72rem; color: #9AA3B2; margin-top: 8px; }
 </style>
 </head>
 <body>
 
-<h1>Built Today — Instagram Post Pack</h1>
-<p class="lede">Five ready-to-post square graphics with captions. Click Download to save the PNG, click Copy to grab the caption text.</p>
+<h1>Built Today — Instagram Kit</h1>
+<p class="lede">Profile picture options below (both square and how it'll actually look once Instagram crops it to a circle), then ten ready-to-post square graphics with captions. Click Download to save any PNG, Copy to grab caption text.</p>
 
+<h2 style="text-align:center;font-family:'Sora',sans-serif;font-size:1.05rem;margin:0 0 18px;">Profile picture</h2>
+<div class="pfp-grid" id="pfpGrid"></div>
+
+<h2 style="text-align:center;font-family:'Sora',sans-serif;font-size:1.05rem;margin:0 0 18px;">Posts</h2>
 <div class="grid" id="postGrid"></div>
 
 <script>
@@ -308,15 +319,101 @@ function buildPostBlock(post) {
   return { block, canvas };
 }
 
+/* ============================== PROFILE PICTURE ============================== */
+const PFP_VARIANTS = [
+  { id: "solid", label: "Bold monogram" },
+  { id: "ring", label: "Monogram with ring" },
+];
+
+function drawProfilePic(canvas, variant) {
+  const ctx = canvas.getContext("2d");
+  const W = 1080, H = 1080;
+  canvas.width = W; canvas.height = H;
+
+  const grad = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, W * 0.75);
+  grad.addColorStop(0, "#1B2130");
+  grad.addColorStop(1, "#0E1116");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  if (variant === "solid") {
+    ctx.fillStyle = "#FF7A33";
+    ctx.font = "800 480px 'Sora'";
+    ctx.fillText("BT", W / 2, H / 2 + 40);
+  } else if (variant === "ring") {
+    ctx.beginPath();
+    ctx.arc(W / 2, H / 2, 430, 0, Math.PI * 2);
+    ctx.strokeStyle = "#FF7A33";
+    ctx.lineWidth = 16;
+    ctx.stroke();
+    ctx.fillStyle = "#F3F1EC";
+    ctx.font = "800 400px 'Sora'";
+    ctx.fillText("BT", W / 2, H / 2 + 30);
+  }
+}
+
+function buildPfpBlock(variant) {
+  const block = document.createElement("div");
+  block.className = "pfp-block";
+
+  const row = document.createElement("div");
+  row.className = "pfp-preview-row";
+
+  const squareWrap = document.createElement("div");
+  squareWrap.className = "pfp-square";
+  const squareCanvas = document.createElement("canvas");
+  squareWrap.appendChild(squareCanvas);
+
+  const roundWrap = document.createElement("div");
+  roundWrap.className = "pfp-round";
+  const roundCanvas = document.createElement("canvas");
+  roundWrap.appendChild(roundCanvas);
+
+  row.appendChild(squareWrap);
+  row.appendChild(roundWrap);
+  block.appendChild(row);
+
+  const label = document.createElement("div");
+  label.className = "pfp-label";
+  label.textContent = variant.label + " (square file + circle preview)";
+  block.appendChild(label);
+
+  const dlBtn = document.createElement("button");
+  dlBtn.className = "dl-btn";
+  dlBtn.textContent = "Download PNG";
+  dlBtn.onclick = () => {
+    const a = document.createElement("a");
+    a.href = squareCanvas.toDataURL("image/png");
+    a.download = "built-today-profile-" + variant.id + ".png";
+    a.click();
+  };
+  block.appendChild(dlBtn);
+
+  return { block, squareCanvas, roundCanvas };
+}
+
 async function init() {
   if (document.fonts && document.fonts.ready) {
     try {
       await document.fonts.load("800 92px 'Sora'");
       await document.fonts.load("700 30px 'Sora'");
       await document.fonts.load("500 36px 'IBM Plex Sans'");
+      await document.fonts.load("800 480px 'Sora'");
       await document.fonts.ready;
     } catch (e) { /* fonts unavailable -- canvas will fall back to default sans-serif */ }
   }
+
+  const pfpGrid = document.getElementById("pfpGrid");
+  PFP_VARIANTS.forEach(variant => {
+    const { block, squareCanvas, roundCanvas } = buildPfpBlock(variant);
+    pfpGrid.appendChild(block);
+    drawProfilePic(squareCanvas, variant.id);
+    drawProfilePic(roundCanvas, variant.id);
+  });
+
   const grid = document.getElementById("postGrid");
   POSTS.forEach(post => {
     const { block, canvas } = buildPostBlock(post);
