@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Built Today — Facebook Page Kit</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230E1116'/%3E%3Ctext x='50' y='71' font-family='Arial, Helvetica, sans-serif' font-weight='800' font-size='60' fill='%23FF7A33' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #0E1116; color: #F3F1EC; font-family: "IBM Plex Sans", sans-serif;
+    padding: 30px 18px 70px;
+  }
+  h1 { font-family: "Sora", sans-serif; font-size: 1.5rem; text-align: center; margin: 0 0 6px; }
+  h2 { text-align: center; font-family: "Sora", sans-serif; font-size: 1.05rem; margin: 40px 0 18px; }
+  p.lede { text-align: center; color: #9AA3B2; max-width: 560px; margin: 0 auto 10px; }
+  .block { max-width: 640px; margin: 0 auto 20px; background: #171B22; border: 1px solid #262C36; border-radius: 16px; padding: 20px; }
+  .block.wide { max-width: 900px; }
+  canvas.square { width: 220px; height: 220px; border-radius: 12px; display: block; margin: 0 auto; }
+  canvas.cover { width: 100%; max-width: 820px; height: auto; border-radius: 12px; display: block; margin: 0 auto; }
+  .dl-btn {
+    display: block; width: 100%; max-width: 320px; margin: 14px auto 0; padding: 11px; border-radius: 8px; border: none;
+    background: #FF7A33; color: #1A0E06; font-weight: 700; cursor: pointer; font-size: 0.9rem;
+  }
+  .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9AA3B2; margin-bottom: 8px; font-weight: 700; text-align: center; }
+  textarea, input.field {
+    width: 100%; background: #0E1116; color: #F3F1EC; border: 1px solid #262C36;
+    border-radius: 8px; padding: 12px; font-family: "IBM Plex Sans", sans-serif; font-size: 0.88rem; line-height: 1.6;
+  }
+  textarea { min-height: 90px; resize: vertical; }
+  .copy-btn {
+    margin-top: 8px; background: transparent; border: 1px solid #262C36; color: #F3F1EC; padding: 8px 14px;
+    border-radius: 8px; font-size: 0.8rem; cursor: pointer; font-weight: 600; display: block; width: 100%; max-width: 320px; margin-left: auto; margin-right: auto;
+  }
+  .field-row { margin-bottom: 16px; }
+  .field-row:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<h1>Built Today — Facebook Page Kit</h1>
+<p class="lede">Everything needed to set up the real page at facebook.com/pages/create — download the images, copy the text, paste it all in.</p>
+
+<h2>Profile picture</h2>
+<div class="block">
+  <canvas class="square" id="pfpCanvas"></canvas>
+  <div class="label" style="margin-top:12px;">Same wordmark as the Instagram profile pic</div>
+  <button class="dl-btn" onclick="downloadCanvas('pfpCanvas','built-today-facebook-profile.png')">Download PNG</button>
+</div>
+
+<h2>Cover photo</h2>
+<div class="block wide">
+  <canvas class="cover" id="coverCanvas"></canvas>
+  <div class="label" style="margin-top:12px;">820 &times; 312px — Facebook's recommended cover size</div>
+  <button class="dl-btn" onclick="downloadCanvas('coverCanvas','built-today-facebook-cover.png')">Download PNG</button>
+</div>
+
+<h2>Page details</h2>
+<div class="block wide">
+  <div class="field-row">
+    <div class="label">Page name</div>
+    <input class="field" readonly value="Built Today" onclick="this.select()">
+  </div>
+  <div class="field-row">
+    <div class="label">Category</div>
+    <input class="field" readonly value="Software Company (or: Business Service / Web Designer)" onclick="this.select()">
+  </div>
+  <div class="field-row">
+    <div class="label">Website</div>
+    <input class="field" readonly value="https://builttoday.github.io/" onclick="this.select()">
+  </div>
+  <div class="field-row">
+    <div class="label">Contact email</div>
+    <input class="field" readonly value="builttoday@yahoo.com" onclick="this.select()">
+  </div>
+  <div class="field-row">
+    <div class="label">Short description (bio)</div>
+    <textarea id="bioText" readonly>Custom software, built and live the same day. If you can think it, I can build it.</textarea>
+    <button class="copy-btn" onclick="copyField('bioText', this)">Copy</button>
+  </div>
+  <div class="field-row" style="margin-top:16px;">
+    <div class="label">Long description (About)</div>
+    <textarea id="aboutText" readonly style="min-height:150px;">Built Today builds custom software — web apps, tools, bots, games — and puts it live the same day. No lengthy discovery phase, no six-week wait for a first draft: tell me what you need, and it gets built while the idea is still fresh.
+
+Every project on the site is genuinely live, not a mockup. See what's been built at builttoday.github.io, or send a message to talk about what you're thinking of building.</textarea>
+    <button class="copy-btn" onclick="copyField('aboutText', this)">Copy</button>
+  </div>
+  <div class="field-row" style="margin-top:16px;">
+    <div class="label">Suggested first post</div>
+    <textarea id="firstPost" readonly>We're live! 🎉
+
+Built Today builds custom software and gets it live the same day — no six-week wait, no lengthy back-and-forth. If you can think it, we can build it.
+
+Check out what's already live: builttoday.github.io</textarea>
+    <button class="copy-btn" onclick="copyField('firstPost', this)">Copy</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+function downloadCanvas(canvasId, filename) {
+  const canvas = document.getElementById(canvasId);
+  const a = document.createElement("a");
+  a.href = canvas.toDataURL("image/png");
+  a.download = filename;
+  a.click();
+}
+
+function copyField(id, btn) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.value).then(() => {
+    const original = btn.textContent;
+    btn.textContent = "Copied!";
+    setTimeout(() => { btn.textContent = original; }, 1500);
+  });
+}
+
+function drawProfilePic(canvas) {
+  const ctx = canvas.getContext("2d");
+  const W = 1080, H = 1080;
+  canvas.width = W; canvas.height = H;
+  const grad = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, W * 0.75);
+  grad.addColorStop(0, "#1B2130");
+  grad.addColorStop(1, "#0E1116");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.font = "800 190px 'Sora'";
+  ctx.fillStyle = "#F3F1EC";
+  ctx.fillText("Built", W / 2, H / 2 - 110);
+  ctx.fillStyle = "#FF7A33";
+  ctx.fillText("Today", W / 2, H / 2 + 110);
+}
+
+function drawCoverPhoto(canvas) {
+  const ctx = canvas.getContext("2d");
+  const W = 820, H = 312;
+  canvas.width = W; canvas.height = H;
+  const grad = ctx.createLinearGradient(0, 0, W, H);
+  grad.addColorStop(0, "#1B2130");
+  grad.addColorStop(1, "#0E1116");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // accent glow
+  ctx.beginPath();
+  ctx.arc(W * 0.85, H * 0.15, 160, 0, Math.PI * 2);
+  ctx.fillStyle = "#FF7A3322";
+  ctx.fill();
+
+  ctx.textAlign = "left";
+  ctx.textBaseline = "alphabetic";
+  ctx.fillStyle = "#FF7A33";
+  ctx.font = "700 20px 'Sora'";
+  ctx.fillText("CUSTOM SOFTWARE, BUILT FAST", 60, 130);
+
+  ctx.fillStyle = "#F3F1EC";
+  ctx.font = "800 46px 'Sora'";
+  ctx.fillText("If you can think it,", 60, 185);
+  ctx.fillStyle = "#FF7A33";
+  ctx.fillText("I can build it.", 60, 235);
+}
+
+async function init() {
+  if (document.fonts && document.fonts.ready) {
+    try {
+      await document.fonts.load("800 190px 'Sora'");
+      await document.fonts.load("800 46px 'Sora'");
+      await document.fonts.load("700 20px 'Sora'");
+      await document.fonts.ready;
+    } catch (e) { /* fonts unavailable -- canvas will fall back to default sans-serif */ }
+  }
+  drawProfilePic(document.getElementById("pfpCanvas"));
+  drawCoverPhoto(document.getElementById("coverCanvas"));
+}
+init();
+</script>
+</body>
+</html>
