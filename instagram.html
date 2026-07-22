@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Built Today — Instagram Posts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #0E1116; color: #F3F1EC; font-family: "IBM Plex Sans", sans-serif;
+    padding: 30px 18px 70px;
+  }
+  h1 { font-family: "Sora", sans-serif; font-size: 1.5rem; text-align: center; margin: 0 0 6px; }
+  p.lede { text-align: center; color: #9AA3B2; max-width: 520px; margin: 0 auto 40px; }
+  .grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 34px; }
+  .post-block { background: #171B22; border: 1px solid #262C36; border-radius: 16px; padding: 18px; }
+  canvas { width: 100%; height: auto; border-radius: 10px; display: block; background: #0E1116; }
+  .dl-btn {
+    display: block; width: 100%; margin-top: 12px; padding: 11px; border-radius: 8px; border: none;
+    background: #FF7A33; color: #1A0E06; font-weight: 700; cursor: pointer; font-size: 0.9rem;
+  }
+  .caption-box { margin-top: 14px; }
+  .caption-box .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9AA3B2; margin-bottom: 6px; font-weight: 700; }
+  textarea {
+    width: 100%; min-height: 150px; background: #0E1116; color: #F3F1EC; border: 1px solid #262C36;
+    border-radius: 8px; padding: 12px; font-family: "IBM Plex Sans", sans-serif; font-size: 0.85rem; line-height: 1.6; resize: vertical;
+  }
+  .copy-btn {
+    margin-top: 8px; background: transparent; border: 1px solid #262C36; color: #F3F1EC; padding: 8px 14px;
+    border-radius: 8px; font-size: 0.8rem; cursor: pointer; font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<h1>Built Today — Instagram Post Pack</h1>
+<p class="lede">Five ready-to-post square graphics with captions. Click Download to save the PNG, click Copy to grab the caption text.</p>
+
+<div class="grid" id="postGrid"></div>
+
+<script>
+"use strict";
+
+const POSTS = [
+  {
+    id: "launch",
+    eyebrow: "NOW TAKING PROJECTS",
+    headline: "If you can think it,\nI can build it.",
+    sub: "Custom software. Built and live the same day.",
+    accent: "#FF7A33",
+    caption: `If you can think it, I can build it. 💡
+
+Custom software, built and live the SAME DAY. Not a mockup. Not a six-week proposal. A real, working product you can click around in — before you've finished your coffee.
+
+Got an idea? Send it over.
+
+#buildinpublic #customsoftware #startup #webdev #sameday #smallbusiness #techstartup`,
+  },
+  {
+    id: "howitworks",
+    eyebrow: "HOW IT WORKS",
+    headline: "Idea today.\nLive today.",
+    sub: "Tell me what you need → I build it → it goes live → we refine it. All in one day.",
+    accent: "#4BC48A",
+    caption: `Here's the whole process 👇
+
+1️⃣ Tell me what you need — a conversation, not a spec doc
+2️⃣ It gets built — real progress, not a waiting room
+3️⃣ It goes live — deployed and working, same day
+4️⃣ We refine it — changes turn around in minutes, not sprints
+
+No lengthy discovery phase. No waiting weeks for a quote. The build starts the moment the idea is clear.
+
+#productdevelopment #mvp #buildfast #softwaredevelopment #startuplife`,
+  },
+  {
+    id: "beatstudio",
+    eyebrow: "RECENT BUILD",
+    headline: "A full music\nstudio.\nIn a browser.",
+    sub: "Step sequencer. Synths. Mixer. Recording. Built and shipped in a day.",
+    accent: "#7C5CFF",
+    caption: `Latest build: a complete music production studio that runs entirely in the browser 🎹
+
+Step sequencer, piano roll, two synth engines, a drum kit, full mixer with FX, song arrangement, voice recording with autotune, and WAV export.
+
+No installs. No plugins. No subscription.
+
+This is the kind of thing that gets built when you have an idea and someone who can just... build it.
+
+#musicproduction #webaudio #daw #browserapp #buildinpublic`,
+  },
+  {
+    id: "trading",
+    eyebrow: "ALSO BUILT",
+    headline: "Automated\ntrading\nsystems.",
+    sub: "Backtested against years of real market data. Built like real money depends on it.",
+    accent: "#FFE156",
+    caption: `Not everything is a pretty app 👀
+
+Also building automated trading systems — algorithmic strategies backtested against years of real market data, with daily loss limits, position caps, and circuit breakers built in from day one.
+
+Every change gets re-validated against history before it ships. The discipline is the product.
+
+#algotrading #fintech #automation #quant #buildinpublic`,
+  },
+  {
+    id: "speed",
+    eyebrow: "THE PITCH",
+    headline: "Most people\nquote you\na timeline.",
+    sub: "I just build it. Today.",
+    accent: "#FF7A33",
+    caption: `Most software gets built like this: discovery call → proposal → quote → wait 4-6 weeks → first draft.
+
+This gets built like this: tell me what you need → it's live today.
+
+Same quality. Fraction of the wait.
+
+DM me or check the link in bio to see what's already live.
+
+#startup #entrepreneur #softwaredevelopment #buildfast #productivity`,
+  },
+  {
+    id: "alltime",
+    eyebrow: "RECENT BUILD",
+    headline: "Track anything.\nWatch it\nadd up.",
+    sub: "A multi-activity diary and achievement tracker — streaks, progress, real motivation.",
+    accent: "#4BC48A",
+    caption: `Built: a multi-activity diary and achievement tracker 📈
+
+Log any activity, build real streaks, watch progress actually add up over time. Simple to use, satisfying to open every day — which is the whole point of a habit tool that people actually stick with.
+
+Have an idea for something people would open daily? Let's talk.
+
+#habittracker #productivity #appdesign #buildinpublic #consistency`,
+  },
+  {
+    id: "dance",
+    eyebrow: "RECENT BUILD",
+    headline: "A practice\ndiary, built\nfor a dancer.",
+    sub: "Log routines, track progress, made for how a real dancer actually practices.",
+    accent: "#FF3EA5",
+    caption: `Built: a personal dance-practice diary 💃
+
+Made for one specific person, one specific way of practicing — routines logged, progress tracked, nothing generic about it.
+
+That's the difference between a template and something built around exactly how you work. Tell me how you actually do the thing, and it gets built around that.
+
+#appdevelopment #customsoftware #dance #buildinpublic`,
+  },
+  {
+    id: "golf",
+    eyebrow: "RECENT BUILD",
+    headline: "Every shot.\nEvery round.\nTracked.",
+    sub: "Club, distance, outcome — the numbers behind your game, shot by shot.",
+    accent: "#FFE156",
+    caption: `Built: a golf shot tracker ⛳
+
+Club, distance, outcome — logged shot by shot, round by round, so the numbers behind your game are actually there when you want them.
+
+Sports, hobbies, habits, side projects — if it can be tracked, it can be built.
+
+#golf #sportsanalytics #appdevelopment #buildinpublic #golftech`,
+  },
+  {
+    id: "proof",
+    eyebrow: "THE NUMBERS",
+    headline: "Real apps.\nReal people\nusing them.",
+    sub: "Every single one of these is live right now — not a portfolio of concepts.",
+    accent: "#7C5CFF",
+    caption: `Not a portfolio of concepts. Not a bunch of Dribbble mockups.
+
+Every project shown is LIVE right now, being used by real people for real reasons — music production, fitness, language learning, exam prep, habit tracking, sports stats, games.
+
+Different problems, different people, same approach: understand what's actually needed, build it, ship it.
+
+What's yours going to be?
+
+#buildinpublic #webdevelopment #realresults #softwareengineering #startup`,
+  },
+  {
+    id: "backend",
+    eyebrow: "REAL BACKEND, SAME DAY",
+    headline: "\"Can you add\na database?\"\n\"Already done.\"",
+    sub: "A live database, a real API, synced across every device — added in hours, not weeks.",
+    accent: "#4BC48A",
+    caption: `"Can you add a database to that?" 🗄️
+
+Yesterday's arcade game only saved high scores on whatever one device you played on. Today it has a real backend — a live database, an API, a global leaderboard synced across every device.
+
+Added in hours. Not a separate project, not a slower kind of build — same process, same day.
+
+Not every app needs a backend. But when one does, it shouldn't change the timeline.
+
+#backenddevelopment #fullstack #database #buildinpublic #softwareengineering`,
+  },
+];
+
+function wrapText(ctx, text, maxWidth) {
+  const paragraphs = text.split("\n");
+  const lines = [];
+  paragraphs.forEach(p => {
+    const words = p.split(" ");
+    let line = "";
+    words.forEach(w => {
+      const test = line ? line + " " + w : w;
+      if (ctx.measureText(test).width > maxWidth && line) {
+        lines.push(line);
+        line = w;
+      } else {
+        line = test;
+      }
+    });
+    lines.push(line);
+  });
+  return lines;
+}
+
+function drawPost(canvas, post) {
+  const ctx = canvas.getContext("2d");
+  const W = 1080, H = 1080;
+  canvas.width = W; canvas.height = H;
+
+  // background
+  const grad = ctx.createRadialGradient(W * 0.75, H * 0.15, 0, W * 0.75, H * 0.15, W * 0.9);
+  grad.addColorStop(0, "#1B2130");
+  grad.addColorStop(1, "#0E1116");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // accent glow shape top-right
+  ctx.beginPath();
+  ctx.arc(W * 0.88, H * 0.1, 260, 0, Math.PI * 2);
+  ctx.fillStyle = post.accent + "22";
+  ctx.fill();
+
+  // eyebrow
+  ctx.fillStyle = post.accent;
+  ctx.font = "700 30px 'Sora'";
+  ctx.textBaseline = "alphabetic";
+  ctx.fillText(post.eyebrow, 80, 170);
+
+  // headline
+  ctx.fillStyle = "#F3F1EC";
+  ctx.font = "800 92px 'Sora'";
+  const lines = post.headline.split("\n");
+  let y = 320;
+  lines.forEach(line => { ctx.fillText(line, 80, y); y += 100; });
+
+  // accent underline
+  ctx.fillStyle = post.accent;
+  ctx.fillRect(80, y + 10, 120, 8);
+
+  // sub text (wrapped)
+  ctx.fillStyle = "#9AA3B2";
+  ctx.font = "500 36px 'IBM Plex Sans'";
+  const subLines = wrapText(ctx, post.sub, W - 160);
+  let sy = y + 80;
+  subLines.forEach(line => { ctx.fillText(line, 80, sy); sy += 48; });
+
+  // wordmark bottom
+  ctx.font = "800 40px 'Sora'";
+  ctx.fillStyle = "#F3F1EC";
+  ctx.fillText("Built", 80, H - 80);
+  const w1 = ctx.measureText("Built").width;
+  ctx.fillStyle = post.accent;
+  ctx.fillText("Today", 80 + w1, H - 80);
+}
+
+function buildPostBlock(post) {
+  const block = document.createElement("div");
+  block.className = "post-block";
+  const canvas = document.createElement("canvas");
+  block.appendChild(canvas);
+
+  const dlBtn = document.createElement("button");
+  dlBtn.className = "dl-btn";
+  dlBtn.textContent = "Download PNG";
+  dlBtn.onclick = () => {
+    const a = document.createElement("a");
+    a.href = canvas.toDataURL("image/png");
+    a.download = "built-today-" + post.id + ".png";
+    a.click();
+  };
+  block.appendChild(dlBtn);
+
+  const captionBox = document.createElement("div");
+  captionBox.className = "caption-box";
+  const label = document.createElement("div");
+  label.className = "label"; label.textContent = "Caption";
+  captionBox.appendChild(label);
+  const ta = document.createElement("textarea");
+  ta.value = post.caption; ta.readOnly = true;
+  captionBox.appendChild(ta);
+  const copyBtn = document.createElement("button");
+  copyBtn.className = "copy-btn"; copyBtn.textContent = "Copy caption";
+  copyBtn.onclick = () => {
+    navigator.clipboard.writeText(post.caption).then(() => {
+      copyBtn.textContent = "Copied!";
+      setTimeout(() => { copyBtn.textContent = "Copy caption"; }, 1500);
+    });
+  };
+  captionBox.appendChild(copyBtn);
+  block.appendChild(captionBox);
+
+  return { block, canvas };
+}
+
+async function init() {
+  if (document.fonts && document.fonts.ready) {
+    try {
+      await document.fonts.load("800 92px 'Sora'");
+      await document.fonts.load("700 30px 'Sora'");
+      await document.fonts.load("500 36px 'IBM Plex Sans'");
+      await document.fonts.ready;
+    } catch (e) { /* fonts unavailable -- canvas will fall back to default sans-serif */ }
+  }
+  const grid = document.getElementById("postGrid");
+  POSTS.forEach(post => {
+    const { block, canvas } = buildPostBlock(post);
+    grid.appendChild(block);
+    drawPost(canvas, post);
+  });
+}
+init();
+</script>
+</body>
+</html>

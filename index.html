@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Built Today — custom software, live the same day</title>
+<meta name="description" content="Tell me what you need built. I scope it, build it, and put it live the same day — real working software, not a mockup or a proposal.">
+<meta name="theme-color" content="#0E1116">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E1116; --surface: #171B22; --ink: #F3F1EC; --ink-soft: #9AA3B2; --line: #262C36;
+    --accent: #FF7A33; --accent-soft: #3A2418; --good: #4BC48A;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display { font-family: "Sora", -apple-system, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+  a { color: inherit; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 22px; }
+  section { padding: 70px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  header.top { position: sticky; top: 0; z-index: 10; background: rgba(14,17,22,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; }
+  .logo { font-family: "Sora", sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; }
+  .logo span { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: #1A0E06; font-weight: 700; text-decoration: none;
+    padding: 9px 18px; border-radius: 999px; font-size: 0.85rem;
+  }
+
+  .hero { padding-top: 90px; padding-bottom: 80px; text-align: left; }
+  .eyebrow {
+    display: inline-block; color: var(--accent); font-weight: 700; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 18px;
+  }
+  h1.headline { font-size: clamp(2.2rem, 5.5vw, 3.6rem); line-height: 1.06; margin: 0 0 22px; text-wrap: balance; }
+  h1.headline em { color: var(--accent); font-style: normal; }
+  .sub { font-size: 1.1rem; color: var(--ink-soft); max-width: 560px; margin: 0 0 34px; }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #1A0E06; text-decoration: none; font-weight: 700;
+    padding: 15px 26px; border-radius: 10px; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-ghost {
+    border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-weight: 600;
+    padding: 15px 26px; border-radius: 10px; font-size: 0.95rem;
+  }
+
+  h2.section-h { font-size: 1.7rem; margin: 0 0 8px; }
+  .section-sub { color: var(--ink-soft); margin: 0 0 40px; max-width: 560px; }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 24px; }
+  .step { }
+  .step .num {
+    font-family: "Sora", sans-serif; font-weight: 800; font-size: 0.85rem; color: var(--accent);
+    border: 1px solid var(--accent-soft); background: var(--accent-soft); width: 34px; height: 34px;
+    border-radius: 999px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+  }
+  .step h3 { font-size: 1.02rem; margin: 0 0 6px; }
+  .step p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
+
+  .feature-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 34px;
+    display: grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: 20px;
+  }
+  .feature-card .tag {
+    display: inline-block; background: var(--accent-soft); color: var(--accent); font-size: 0.72rem;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 999px;
+    width: fit-content; margin-bottom: 10px;
+  }
+  .feature-card h3 { font-size: 1.35rem; margin: 0 0 10px; }
+  .feature-card p { color: var(--ink-soft); margin: 0 0 16px; max-width: 560px; }
+  .feature-card .link { color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.92rem; }
+
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 26px; }
+  .portfolio-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px;
+    text-decoration: none; color: var(--ink); display: block;
+  }
+  .portfolio-card .p-icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .portfolio-card .p-name { font-weight: 700; font-size: 0.98rem; margin-bottom: 4px; }
+  .portfolio-card .p-desc { color: var(--ink-soft); font-size: 0.84rem; }
+
+  .build-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 10px; }
+  .build-item { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; font-size: 0.92rem; font-weight: 500; }
+  .build-item .b-icon { margin-right: 8px; }
+
+  .contact-box {
+    background: linear-gradient(145deg, var(--surface), #1B1410); border: 1px solid var(--line);
+    border-radius: 22px; padding: 48px 36px; text-align: center;
+  }
+  .contact-box h2 { font-size: 1.9rem; margin: 0 0 12px; }
+  .contact-box p { color: var(--ink-soft); max-width: 480px; margin: 0 auto 28px; }
+
+  footer.note { text-align: center; color: var(--ink-soft); font-size: 0.8rem; padding: 40px 0; }
+  footer.note a { color: var(--ink-soft); text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    section { padding: 48px 0; }
+    .contact-box { padding: 34px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" style="text-decoration:none;">Built<span>Today</span></a>
+    <div style="display:flex;align-items:center;gap:18px;">
+      <a href="pricing.html" style="text-decoration:none;color:var(--ink-soft);font-size:0.88rem;font-weight:600;">Pricing</a>
+      <a class="nav-cta" href="mailto:william.munro@yahoo.co.uk?subject=Let%27s%20build%20something">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Custom software, built fast</span>
+    <h1 class="headline">If you can think it, <em>I can build it.</em></h1>
+    <p class="sub">Tell me what you need. I scope it in a conversation, build it, and put it live the same day —
+      real, working software you can click around in, not a mockup or a six-week proposal. Want something changed?
+      That's usually minutes away too.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="mailto:william.munro@yahoo.co.uk?subject=Let%27s%20build%20something">Tell me what you need →</a>
+      <a class="btn-ghost" href="#proof">See what's been built</a>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2 class="section-h">How it works</h2>
+    <p class="section-sub">No lengthy discovery phase, no waiting on a quote. The build starts the moment the idea is clear.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Tell me what you need</h3><p>A short conversation about the problem, not a spec document.</p></div>
+      <div class="step"><div class="num">2</div><h3>It gets built</h3><p>Real progress while you wait — you can watch it come together.</p></div>
+      <div class="step"><div class="num">3</div><h3>It goes live</h3><p>Deployed and working, same day. Something you can actually use or show people.</p></div>
+      <div class="step"><div class="num">4</div><h3>Iterate fast</h3><p>See something you'd change? Fixes turn around in minutes, not sprints — the first round's free.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="proof">
+  <div class="wrap">
+    <h2 class="section-h">Proof, not promises</h2>
+    <p class="section-sub">Everything below is live, real software — not renders or Figma files.</p>
+
+    <div class="feature-card">
+      <div>
+        <span class="tag">Featured build</span>
+        <h3>Beat Studio</h3>
+        <p>A full music production studio that runs entirely in the browser — step sequencer, piano roll, two synth
+          engines, a drum kit, per-track mixer with FX, song arrangement with layered pattern mixes, voice recording
+          with algorithmic autotune, and WAV export. No installs, no plugins, no subscriptions.</p>
+        <a class="link" href="https://everything-sats.github.io/beat-studio/" target="_blank" rel="noopener">Open Beat Studio →</a>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div>
+        <span class="tag">Also built</span>
+        <h3>Automated trading systems</h3>
+        <p>Multiple algorithmic trading strategies for gold markets, each backtested against years of real market
+          data before ever being trusted to run live — built-in daily loss limits, position caps, and circuit
+          breakers, with every parameter change re-validated against history before it ships. The kind of
+          engineering discipline that goes into something real money could depend on.</p>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div>
+        <span class="tag">Real backend, same day</span>
+        <h3>A live database, wired in hours</h3>
+        <p>Arcade For All started as a pure browser app — high scores only ever lived on whatever one device you
+          played on. Added a real backend: a live database, an API, and a global leaderboard synced across every
+          device — built, connected, and live the same day. Not every project needs a backend, but when one does,
+          it's not a separate, slower kind of build.</p>
+        <a class="link" href="https://everything-sats.github.io/arcade-for-all/" target="_blank" rel="noopener">Try the leaderboard →</a>
+      </div>
+    </div>
+
+    <div class="portfolio-grid">
+      <a class="portfolio-card" href="https://everything-sats.github.io/home-circuit/" target="_blank" rel="noopener">
+        <div class="p-icon">🏋️</div>
+        <div class="p-name">Home Circuit</div>
+        <div class="p-desc">Voice-cued bodyweight workout app with adjustable intensity and a full exercise guide.</div>
+      </a>
+      <a class="portfolio-card" href="https://everything-sats.github.io/arcade-for-all/" target="_blank" rel="noopener">
+        <div class="p-icon">👾</div>
+        <div class="p-name">Arcade For All</div>
+        <div class="p-desc">Five classic games rebuilt from scratch — Space Invaders, Tetris, Snake, Breakout, Pong.</div>
+      </a>
+      <a class="portfolio-card" href="https://everything-sats.github.io/" target="_blank" rel="noopener">
+        <div class="p-icon">📝</div>
+        <div class="p-name">Everything SATS</div>
+        <div class="p-desc">Free UK Year 6 SATs revision site — every subject, built for real families, not a sales funnel.</div>
+      </a>
+      <a class="portfolio-card" href="https://everything-sats.github.io/dutch-trainer/" target="_blank" rel="noopener">
+        <div class="p-icon">🇳🇱</div>
+        <div class="p-name">Dutch in Two Weeks</div>
+        <div class="p-desc">A full language-learning app — flashcards, quizzes, spoken pronunciation, spaced review.</div>
+      </a>
+      <a class="portfolio-card" href="https://alltimediary.com/" target="_blank" rel="noopener">
+        <div class="p-icon">🏆</div>
+        <div class="p-name">AllTime</div>
+        <div class="p-desc">Multi-activity diary and achievement tracker — log progress, build streaks, watch it add up.</div>
+      </a>
+      <a class="portfolio-card" href="https://ocean-loves-dance.github.io/" target="_blank" rel="noopener">
+        <div class="p-icon">💃</div>
+        <div class="p-name">Dance Diary</div>
+        <div class="p-desc">A personal dance-practice diary — log routines, track progress, built for a real dancer.</div>
+      </a>
+      <a class="portfolio-card" href="https://everything-sats.github.io/golf-tracker/" target="_blank" rel="noopener">
+        <div class="p-icon">⛳</div>
+        <div class="p-name">Golf Shot Tracker</div>
+        <div class="p-desc">Track every shot round by round — club, distance, outcome — and see the numbers behind your game.</div>
+      </a>
+      <a class="portfolio-card" href="https://everything-sats.github.io/everything-free/" target="_blank" rel="noopener">
+        <div class="p-icon">🗂️</div>
+        <div class="p-name">And more</div>
+        <div class="p-desc">The full portfolio — eighteen apps and counting, every one of them live.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="what">
+  <div class="wrap">
+    <h2 class="section-h">What gets built</h2>
+    <p class="section-sub">If it can run in a browser or as an automated process, it's fair game.</p>
+    <div class="build-list">
+      <div class="build-item"><span class="b-icon">🌐</span>Web apps &amp; internal tools</div>
+      <div class="build-item"><span class="b-icon">🧪</span>Prototypes &amp; MVPs</div>
+      <div class="build-item"><span class="b-icon">🤖</span>Automated bots &amp; trading systems</div>
+      <div class="build-item"><span class="b-icon">🎮</span>Games &amp; interactive experiences</div>
+      <div class="build-item"><span class="b-icon">📚</span>Educational &amp; training apps</div>
+      <div class="build-item"><span class="b-icon">🎛️</span>Dashboards &amp; data tools</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom: none;">
+  <div class="wrap">
+    <div class="contact-box">
+      <h2>Have something in mind?</h2>
+      <p>Send over what you're thinking — even a rough idea is enough to start. Scope and pricing get worked out together, per project.</p>
+      <a class="btn-primary" href="mailto:william.munro@yahoo.co.uk?subject=Let%27s%20build%20something">Email me →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="note">
+  <div class="wrap">Built Today &middot; every project here was built the same way this page was.</div>
+</footer>
+
+</body>
+</html>
