@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pointe &amp; Print | Custom Dancewear for Schools, Teams &amp; Dancers</title>
+<meta name="description" content="Custom printed and embroidered dancewear: hoodies, zoodies, crop tops, leggings, joggers and tracksuits with your dance school's logo. Adult and kids' sizes. Get a free quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Bebas+Neue&family=Pacifico&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<script src="garments.js"></script>
+<script src="products.js"></script>
+<script src="design.js"></script>
+<style>
+  :root{
+    --ink:#141414; --ink-soft:#5f5b58; --line:#e7e2de; --bg:#ffffff; --bg-soft:#f7f3f0;
+    --blush:#f3dfe0; --rose:#b8526f; --rose-dark:#933b56; --ok:#2e7d5b;
+    --radius:14px; --wrap:1180px;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Jost',Arial,sans-serif;color:var(--ink);background:var(--bg);font-size:16px;line-height:1.55}
+  a{color:inherit} img,svg{display:block;max-width:100%}
+  button,input,select,textarea{font:inherit;color:inherit}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+  .upper{text-transform:uppercase;letter-spacing:.14em}
+
+  /* ---- top bar + header ---- */
+  .announce{background:var(--ink);color:#fff;text-align:center;font-size:.8rem;padding:8px 16px;letter-spacing:.06em}
+  header.site{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .hbar{display:flex;align-items:center;gap:20px;height:70px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;white-space:nowrap}
+  .brand svg{width:42px;height:42px;flex:0 0 42px}
+  .brand .bn{display:block;font-size:1.4rem;font-weight:500;letter-spacing:.04em;line-height:1.05}
+  .brand .bn span{color:var(--rose)}
+  .brand small{display:block;font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin-top:2px}
+  nav.main{display:flex;gap:26px;margin-left:auto}
+  nav.main a{text-decoration:none;font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:.13em;padding:6px 0;border-bottom:2px solid transparent}
+  nav.main a:hover,nav.main a.on{border-color:var(--ink)}
+  .basket-btn{position:relative;display:flex;align-items:center;gap:6px;text-decoration:none;font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;border:1.5px solid var(--ink);border-radius:999px;padding:8px 14px}
+  .basket-btn b{background:var(--rose);color:#fff;border-radius:999px;min-width:20px;height:20px;font-size:.72rem;display:grid;place-items:center;padding:0 5px}
+  .menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;margin-left:auto}
+  @media(max-width:860px){
+    nav.main{display:none;position:absolute;top:70px;left:0;right:0;background:#fff;flex-direction:column;gap:0;border-bottom:1px solid var(--line)}
+    nav.main.open{display:flex} nav.main a{padding:14px 20px;border-bottom:1px solid var(--line)}
+    .menu-btn{display:block} .basket-btn{margin-left:0}
+  }
+  @media(max-width:520px){ .hbar{gap:10px} .brand svg{width:34px;height:34px;flex-basis:34px} .brand .bn{font-size:1.12rem} .brand small{font-size:.54rem;letter-spacing:.2em} .basket-btn{padding:7px 10px} .basket-btn .bt{display:none} }
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:13px 26px;font-size:.84rem;font-weight:500;text-transform:uppercase;letter-spacing:.13em;text-decoration:none;cursor:pointer;border:1.5px solid var(--ink);background:var(--ink);color:#fff;transition:.15s}
+  .btn:hover{background:#000}
+  .btn.ghost{background:transparent;color:var(--ink)} .btn.ghost:hover{background:var(--ink);color:#fff}
+  .btn.rose{background:var(--rose);border-color:var(--rose)} .btn.rose:hover{background:var(--rose-dark)}
+  .btn[disabled]{opacity:.45;cursor:not-allowed}
+
+  /* ---- hero ---- */
+  .hero{position:relative;overflow:hidden;background:var(--bg-soft)}
+  .slide{display:none;grid-template-columns:1.05fr .95fr;align-items:center;min-height:500px;gap:20px}
+  .slide.on{display:grid;animation:fade .6s}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .slide h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.05;font-weight:400;margin:10px 0 16px;letter-spacing:-.01em}
+  .slide p{font-size:1.08rem;color:var(--ink-soft);max-width:30em;margin:0 0 26px}
+  .slide .kicker{font-size:.8rem;color:var(--rose);font-weight:600}
+  .slide .art{display:flex;justify-content:center;align-items:flex-end;gap:0;height:100%;padding:30px 0}
+  .slide .art svg{height:330px;width:auto;filter:drop-shadow(0 18px 24px rgba(0,0,0,.12))}
+  .slide .art svg+svg{margin-left:-50px;height:290px}
+  .dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
+  .dots button{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;padding:0;cursor:pointer}
+  .dots button.on{background:var(--ink)}
+  @media(max-width:760px){ .slide{grid-template-columns:1fr;padding:34px 0 60px;min-height:0} .slide .art svg{height:220px} .slide .art svg+svg{height:190px} }
+
+  /* ---- sections ---- */
+  section.block{padding:70px 0}
+  .sec-head{text-align:center;margin-bottom:34px}
+  .sec-head h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:400;margin:6px 0 8px}
+  .sec-head p{color:var(--ink-soft);margin:0 auto;max-width:36em}
+  .sec-head .upper{font-size:.76rem;color:var(--rose);font-weight:600}
+  .cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  @media(max-width:860px){.cat-grid{grid-template-columns:repeat(3,1fr)}} @media(max-width:520px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+  .cat{background:var(--bg-soft);border-radius:var(--radius);padding:18px 14px 16px;text-align:center;text-decoration:none;transition:.2s}
+  .cat:hover{transform:translateY(-3px);background:var(--blush)}
+  .cat svg{height:130px;margin:0 auto 10px} .cat span{font-weight:500;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem}
+  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:center}
+  .values .ico{width:62px;height:62px;border-radius:50%;background:var(--blush);display:grid;place-items:center;margin:0 auto 14px;font-size:1.6rem}
+  .values h3{font-weight:500;margin:0 0 6px;font-size:1.15rem} .values p{color:var(--ink-soft);margin:0}
+  @media(max-width:760px){.values{grid-template-columns:1fr}}
+  .soft{background:var(--bg-soft)}
+  .occ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .occ{position:relative;border-radius:var(--radius);overflow:hidden;min-height:250px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;color:#fff}
+  .occ h3{margin:0 0 4px;font-weight:500;font-size:1.25rem;position:relative} .occ p{margin:0;font-size:.92rem;opacity:.92;position:relative}
+  .occ .bg{position:absolute;inset:0;display:flex;justify-content:center;padding-top:14px}
+  .occ .bg svg{height:150px;opacity:.95}
+  .occ:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.55))}
+  @media(max-width:900px){.occ-grid{grid-template-columns:repeat(2,1fr)}} @media(max-width:520px){.occ-grid{grid-template-columns:1fr}}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+  .step{border-top:2px solid var(--ink);padding-top:16px}
+  .step:before{counter-increment:s;content:"0" counter(s);font-size:.8rem;color:var(--rose);font-weight:600;letter-spacing:.1em}
+  .step h3{margin:6px 0;font-weight:500} .step p{margin:0;color:var(--ink-soft);font-size:.95rem}
+  @media(max-width:860px){.steps{grid-template-columns:1fr 1fr}} @media(max-width:520px){.steps{grid-template-columns:1fr}}
+  .brands{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;font-size:1.05rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8480;font-weight:500}
+  .cta-band{background:var(--ink);color:#fff;border-radius:var(--radius);padding:44px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .cta-band h2{margin:0 0 6px;font-weight:400;font-size:1.8rem} .cta-band p{margin:0;opacity:.8}
+  .cta-band .btn{background:#fff;color:var(--ink);border-color:#fff}
+
+  /* ---- shop ---- */
+  .page-head{background:var(--bg-soft);padding:44px 0 34px;text-align:center}
+  .page-head h1{font-weight:400;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 6px} .page-head p{margin:0;color:var(--ink-soft)}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 30px}
+  .chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px 20px;padding-bottom:70px}
+  .card{text-decoration:none;display:block}
+  .card .img{background:var(--bg-soft);border-radius:var(--radius);aspect-ratio:1/1.05;display:grid;place-items:center;padding:18px;transition:.2s;position:relative}
+  .card:hover .img{background:var(--blush)}
+  .card .img svg{height:88%} .card .tag{position:absolute;top:12px;left:12px;background:#fff;border-radius:999px;font-size:.68rem;padding:4px 10px;text-transform:uppercase;letter-spacing:.1em;font-weight:500}
+  .card h3{font-size:1rem;font-weight:500;margin:12px 0 2px} .card .meta{font-size:.84rem;color:var(--ink-soft)}
+  .card .price{margin-top:4px;font-weight:500}
+  .swatch-row{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+  .swatch-row i{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.18)}
+
+  /* ---- product ---- */
+  .pdp{display:grid;grid-template-columns:1fr 1fr;gap:46px;padding:40px 0 70px}
+  @media(max-width:860px){.pdp{grid-template-columns:1fr;gap:20px}}
+  .pdp .stage{background:var(--bg-soft);border-radius:var(--radius);aspect-ratio:1;display:grid;place-items:center;padding:30px;position:sticky;top:90px}
+  @media(max-width:860px){.pdp .stage{position:static}}
+  .pdp .stage svg{height:92%}
+  .crumbs{font-size:.8rem;color:var(--ink-soft);margin-bottom:10px} .crumbs a{text-decoration:none}
+  .pdp h1{font-weight:400;font-size:2rem;margin:0 0 4px;line-height:1.15}
+  .pdp .code{font-size:.82rem;color:var(--ink-soft);letter-spacing:.06em}
+  .pdp .from{font-size:1.25rem;margin:14px 0 4px;font-weight:500}
+  .opt{margin-top:26px} .opt h4{margin:0 0 10px;font-size:.8rem;text-transform:uppercase;letter-spacing:.13em;font-weight:600}
+  .opt h4 small{font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-soft);font-size:.9rem;margin-left:6px}
+  .swatches{display:flex;flex-wrap:wrap;gap:9px}
+  .swatches button{width:34px;height:34px;border-radius:50%;border:1px solid rgba(0,0,0,.2);cursor:pointer;padding:0;outline-offset:3px}
+  .swatches button.on{outline:2px solid var(--ink)}
+  .size-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+  .size-grid label{border:1.5px solid var(--line);border-radius:10px;padding:6px 8px;text-align:center;font-size:.82rem}
+  .size-grid input{width:100%;border:0;text-align:center;font-size:1rem;padding:4px 0;background:transparent}
+  .size-grid label:focus-within{border-color:var(--ink)}
+  .deco{display:grid;gap:10px}
+  .deco label.row{display:flex;align-items:flex-start;gap:12px;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
+  .deco label.row:has(input:checked){border-color:var(--ink);background:var(--bg-soft)}
+  .deco .row b{display:block;font-weight:500} .deco .row small{color:var(--ink-soft)}
+  .deco .row .p{margin-left:auto;white-space:nowrap;font-weight:500}
+  .field{display:grid;gap:6px;margin-top:12px} .field span{font-size:.84rem;font-weight:500}
+  .field input,.field textarea,.field select{border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;background:#fff;width:100%}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--ink)}
+  .summary{margin-top:26px;background:var(--bg-soft);border-radius:var(--radius);padding:18px 20px}
+  .summary .line{display:flex;justify-content:space-between;font-size:.94rem;margin:3px 0}
+  .summary .total{border-top:1px solid var(--line);margin-top:10px;padding-top:10px;font-size:1.15rem;font-weight:500}
+  .summary .note{font-size:.8rem;color:var(--ink-soft);margin-top:8px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .details{margin-top:30px;border-top:1px solid var(--line)}
+  .details details{border-bottom:1px solid var(--line);padding:14px 0} .details summary{cursor:pointer;font-weight:500;text-transform:uppercase;letter-spacing:.1em;font-size:.84rem}
+  .details p,.details li{color:var(--ink-soft);font-size:.95rem}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:13px 22px;border-radius:999px;transition:.3s;z-index:50;font-size:.92rem;opacity:0;visibility:hidden}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1;visibility:visible}
+
+  /* ---- basket / checkout ---- */
+  .two{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;padding:40px 0 70px} @media(max-width:860px){.two{grid-template-columns:1fr}}
+  .b-item{display:grid;grid-template-columns:96px 1fr auto;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
+  .b-item .th{background:var(--bg-soft);border-radius:10px;padding:8px} .b-item .th svg{height:80px;margin:auto}
+  .b-item h3{margin:0;font-weight:500;font-size:1rem} .b-item p{margin:2px 0;font-size:.86rem;color:var(--ink-soft)}
+  .b-item .rm{background:none;border:0;color:var(--rose);cursor:pointer;font-size:.84rem;padding:0;margin-top:6px;text-decoration:underline}
+  .empty{text-align:center;padding:60px 0;color:var(--ink-soft)}
+  .notice{background:var(--blush);border-radius:12px;padding:14px 16px;font-size:.9rem;margin:14px 0}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px} @media(max-width:560px){.form-grid{grid-template-columns:1fr}}
+  .full{grid-column:1/-1}
+  .prose{max-width:760px;margin:0 auto;padding:40px 20px 70px} .prose h2{font-weight:400;margin-top:34px} .prose p,.prose li{color:var(--ink-soft)}
+  .faq details{border-bottom:1px solid var(--line);padding:14px 0} .faq summary{cursor:pointer;font-weight:500}
+
+  .designer{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;padding:30px 20px 70px}
+  @media(max-width:860px){.designer{grid-template-columns:1fr;gap:18px}}
+  .d-stage-col{position:sticky;top:90px;align-self:start} @media(max-width:860px){.d-stage-col{position:static}}
+  .side-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:10px}
+  .side-tabs button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:7px 20px;cursor:pointer;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem}
+  .side-tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .d-stage{position:relative;aspect-ratio:240/260;background:var(--bg-soft);border-radius:var(--radius);overflow:hidden;touch-action:none;user-select:none}
+  #dGarment,#dGarment svg{position:absolute;inset:0;width:100%;height:100%}
+  .d-area{position:absolute;border:1.5px dashed rgba(184,82,111,.8);border-radius:4px;pointer-events:none}
+  .d-layers{position:absolute;inset:0}
+  .d-layer{position:absolute;display:flex;align-items:center;justify-content:center;cursor:grab;outline:1px dashed transparent}
+  .d-layer:hover{outline-color:rgba(0,0,0,.35)} .d-layer.sel{outline:2px solid var(--rose)}
+  .d-layer img{width:100%;height:100%;object-fit:contain;pointer-events:none}
+  .d-layer span{white-space:nowrap;line-height:1;pointer-events:none}
+  .d-select,.d-input{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;background:#fff}
+  .d-row{display:flex;gap:8px;margin-top:8px} .d-row .d-input{flex:1} .d-row .btn{padding:11px 18px}
+  .d-fonts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .d-fonts button{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:6px 14px;cursor:pointer;font-size:1.05rem}
+  .d-fonts button.on{border-color:var(--ink);background:var(--bg-soft)}
+  .d-inks{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .d-inks button{width:28px;height:28px;border-radius:50%;border:1px solid rgba(0,0,0,.25);cursor:pointer;padding:0;outline-offset:3px}
+  .d-inks button.on{outline:2px solid var(--ink)}
+  .d-slider{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:10px;font-size:.88rem;margin:6px 0} .d-slider input{width:100%;accent-color:var(--rose)}
+  .design-band{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;background:var(--blush);border-radius:var(--radius);padding:36px 44px}
+  .design-band h2{font-weight:400;font-size:2rem;margin:0 0 8px} .design-band p{color:var(--ink-soft);margin:0 0 20px}
+  .design-band .art{display:flex;justify-content:center} .design-band .art svg{height:240px}
+  @media(max-width:760px){.design-band{grid-template-columns:1fr;padding:26px}}
+  .b-item .th img{width:100%;border-radius:8px}
+  .photo{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+  footer.site{background:var(--bg-soft);padding:54px 0 26px;margin-top:0;font-size:.92rem}
+  .f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px} @media(max-width:760px){.f-grid{grid-template-columns:1fr 1fr}}
+  footer h4{text-transform:uppercase;letter-spacing:.13em;font-size:.76rem;margin:0 0 12px} footer a{display:block;text-decoration:none;color:var(--ink-soft);margin:6px 0} footer a:hover{color:var(--ink)}
+  footer .legal{border-top:1px solid var(--line);margin-top:34px;padding-top:18px;color:var(--ink-soft);font-size:.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="announce" id="announce"></div>
+<header class="site"><div class="wrap hbar">
+  <a class="brand" href="#/" id="brandMark"></a>
+  <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  <nav class="main" id="nav">
+    <a href="#/shop">Shop</a><a href="#/design">Design your own</a><a href="#/schools">For schools</a><a href="#/shop/tracksuits">Tracksuits</a><a href="#/how">How it works</a><a href="#/contact">Get a quote</a>
+  </nav>
+  <a class="basket-btn" href="#/basket" aria-label="Basket"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2Z M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span class="bt">Basket</span> <b id="bCount">0</b></a>
+</div></header>
+<main id="app"></main>
+<footer class="site"><div class="wrap">
+  <div class="f-grid">
+    <div><div class="brand" id="brandFoot" style="font-size:1.25rem"></div><p style="color:var(--ink-soft);max-width:22em">Custom dancewear for dance schools, teams and dancers. Your logo, your colours, adult and kids' sizes.</p></div>
+    <div><h4>Shop</h4><a href="#/shop/hoodies">Hoodies &amp; zoodies</a><a href="#/shop/tops">Crop tops &amp; tees</a><a href="#/shop/bottoms">Leggings &amp; joggers</a><a href="#/shop/tracksuits">Tracksuits</a><a href="#/shop/bags">Bags</a></div>
+    <div><h4>Help</h4><a href="#/how">How it works</a><a href="#/schools">For dance schools</a><a href="#/faq">FAQs</a><a href="#/contact">Get a quote</a></div>
+    <div><h4>Contact</h4><a id="footEmail" href="#"></a><a href="#/contact">Send us your logo</a></div>
+  </div>
+  <div class="legal"><span id="copy"></span><span>Garments are branded blanks from trusted brands, decorated to order.</span></div>
+</div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   SETTINGS — everything you might want to change is here.
+   ===================================================================== */
+const CONFIG = {
+  brand: 'Pointe', brandAccent: '& Print',          // shown as "Pointe & Print"
+  tagline: 'Custom dancewear',                      // the small title under the name
+  email: '',                                         // your business email; empty = not shown anywhere on the site
+  // Where order and quote requests are sent. Leave empty until you set one up
+  // (e.g. a free Formspree or Web3Forms form). Until then the site shows the
+  // request and offers to email it instead.
+  formEndpoint: '',
+  // A Stripe Payment Link or checkout URL. Leave empty and the "Pay now" button
+  // stays switched off; customers send an order request instead.
+  paymentUrl: '',
+  // false = every price shows as "£TBA" (prices below are kept, just hidden). true = show prices.
+  showPrices: false,
+  // true = order and quote forms don't send; they say ordering opens soon. Set false once formEndpoint (and email) are set.
+  previewOnly: true,
+  announce: 'Printed and embroidered to order · Adult and kids’ sizes · Free mock-up with every quote',
+  // EXAMPLE PRICES ONLY — replace with your own (garment cost + decoration + margin).
+  decoration: {
+    none:        { label: 'Plain (no decoration)', each: 0 },
+    frontPrint:  { label: 'Printed logo, front',   each: 0 },
+    frontEmb:    { label: 'Embroidered logo, front', each: 0 },
+    backPrint:   { label: 'Large print on the back', each: 0 },
+    name:        { label: 'Personalised name or initials', each: 0 },
+  },
+  setupFee: {},   // one-off digitising fee for embroidery (example)
+  bulk: [ { from: 1, off: 0 }, { from: 10, off: 0.05 }, { from: 25, off: 0.10 }, { from: 50, off: 0.15 } ],
+};
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const gbp = n => CONFIG.showPrices ? '£' + n.toFixed(2) : '£TBA';
+const CATS = [
+  { id: 'hoodies', name: 'Hoodies & zoodies', shape: 'cropHoodie', col: '#e8a3b8' },
+  { id: 'tops', name: 'Crop tops & tees', shape: 'cropTop', col: '#141414' },
+  { id: 'bottoms', name: 'Leggings & joggers', shape: 'leggings', col: '#1f2a56' },
+  { id: 'tracksuits', name: 'Tracksuits', shape: 'tracksuit', col: '#1f2a56' },
+  { id: 'bags', name: 'Bags', shape: 'bag', col: '#e8a3b8' },
+];
+const P = () => window.PRODUCTS || [];
+const byCode = code => P().find(p => p.code === code);
+const swBg = c => c.accent ? `linear-gradient(135deg, ${c.hex} 50%, ${c.accent} 50%)` : c.hex;
+const DANCER = '<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <path d="M26.2 19.6 Q18 15.6 9.4 13.2" fill="none" stroke="#141414" stroke-width="2.5" stroke-linecap="round"/> <path d="M27.4 19.8 Q33.6 13.8 37.6 6.4" fill="none" stroke="#141414" stroke-width="2.5" stroke-linecap="round"/> <path d="M30.2 35 L33.4 34.2 Q36.6 31 58.8 21.6 Q59.6 22.6 58.9 23.4 Q41 32.2 33.8 37.6 Z" fill="#141414"/> <path d="M29.4 35.6 L32.6 35.6 Q32.2 48 31.4 60.6 Q31 62.2 30 62.2 Q29.4 61.4 29.6 60 Q29.4 47 29.4 35.6 Z" fill="#141414"/> <path d="M28.4 34.8 Q27.2 27 25.4 20.2 Q27 18.8 28.6 19.6 Q31.2 26.6 32.6 34.4 Z" fill="#141414"/> <ellipse cx="31" cy="34.6" rx="12" ry="3.1" transform="rotate(-14 31 34.6)" fill="#b8526f"/> <ellipse cx="31" cy="33.8" rx="8" ry="1.8" transform="rotate(-14 31 33.8)" fill="#d98aa2"/> <circle cx="25.2" cy="15.6" r="3.4" fill="#141414"/> <circle cx="23" cy="12.6" r="1.7" fill="#141414"/> </svg>';
+function brandHTML(){ return `${DANCER}<span><span class="bn">${esc(CONFIG.brand)} <span>${esc(CONFIG.brandAccent)}</span></span><small>${esc(CONFIG.tagline)}</small></span>`; }
+/* Real product photo if one has been added (images/<CODE>/<colour>.jpg listed in products.js), else the drawing. */
+function productPic(p, c, label){
+  const src = c && c.photo ? c.photo : p.photo;
+  return src ? `<img class="photo" src="${esc(src)}" alt="${esc(label || p.name)}" loading="lazy">` : garmentSVG(p.shape, c.hex, { label: label || p.name, accent: c.accent });
+}
+
+/* ---------- basket (kept on this device) ---------- */
+let basket = [];
+try { basket = JSON.parse(localStorage.getItem('pp_basket') || '[]'); } catch(e){ basket = []; }
+basket = basket.filter(i => byCode(i.code));               // drop anything no longer sold
+function saveBasket(){ try { localStorage.setItem('pp_basket', JSON.stringify(basket)); } catch(e){} updateCount(); }
+function updateCount(){ $('#bCount').textContent = basket.reduce((s, i) => s + i.qty, 0); }
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2600); }
+
+/* ---------- pricing ---------- */
+function discountFor(qty){ let off = 0; CONFIG.bulk.forEach(t => { if(qty >= t.from) off = t.off; }); return off; }
+function priceLine(p, qty, decos){
+  const decoEach = decos.reduce((s, d) => s + (CONFIG.decoration[d] ? CONFIG.decoration[d].each : 0), 0);
+  const each = p.price + decoEach, off = discountFor(qty);
+  const setup = decos.reduce((s, d) => s + (CONFIG.setupFee[d] || 0), 0);
+  return { each, off, setup, total: each * qty * (1 - off) + setup };
+}
+function basketTotal(){
+  // bulk discount is worked out per product line, on the total quantity of that line
+  return basket.reduce((s, i) => s + priceLine(byCode(i.code), i.qty, i.decos).total, 0);
+}
+
+/* ---------- views ---------- */
+function home(){
+  const slides = [
+    { k: 'Dance school kit', h: 'Your school.<br>Your colours.<br>Your kit.', p: 'Hoodies, zoodies, crop tops and leggings with your dance school’s logo, in adult and kids’ sizes.', a: ['cropHoodie', '#e8a3b8', 'leggings', '#141414'], cta: ['#/schools', 'Kit out your school'] },
+    { k: 'Competition season', h: 'Walk in<br>as a team.', p: 'Matching tracksuits and zoodies with your team name, printed or embroidered, ready for the big day.', a: ['zoodie', '#1f2a56', 'joggers', '#1f2a56'], cta: ['#/shop/tracksuits', 'Shop tracksuits'] },
+    { k: 'Made for one', h: 'Their name,<br>on their kit.', p: 'Personalise a crop top, hoodie or dance bag with a name or initials. A gift they’ll actually wear.', a: ['cropTop', '#7b2d8e', 'bag', '#f3dfe0'], cta: ['#/shop', 'Personalise something'] },
+  ];
+  const cats = CATS.map(c => `<a class="cat" href="#/shop/${c.id}">${garmentSVG(c.shape, c.col, { label: c.name })}<span>${esc(c.name)}</span></a>`).join('');
+  const occ = [
+    ['School uniform', 'Matching kit for every class, from tots to seniors.', '#/schools', 'hoodie', '#b8526f', '#5a2233'],
+    ['Competition kit', 'Team tracksuits and zoodies that look sharp on stage and off.', '#/shop/tracksuits', 'tracksuit', '#1f2a56', '#0e1430'],
+    ['Show & event merch', 'Hoodies and tees for shows, festivals and nationals.', '#/contact', 'tee', '#141414', '#2b2b2b'],
+    ['Personalised gifts', 'A name on a dance bag or crop top. No minimum.', '#/shop/bags', 'bag', '#e8a3b8', '#a0566b'],
+  ].map(o => `<a class="occ" href="${o[2]}" style="background:${o[5]}"><div class="bg">${garmentSVG(o[3], o[4], { noLogo: true })}</div><h3>${o[0]}</h3><p>${o[1]}</p></a>`).join('');
+  return `
+  <section class="hero"><div class="wrap">
+    ${slides.map((s, i) => `<div class="slide${i ? '' : ' on'}"><div><div class="kicker upper">${s.k}</div><h1>${s.h}</h1><p>${s.p}</p>
+      <div class="actions"><a class="btn" href="${s.cta[0]}">${s.cta[1]}</a><a class="btn ghost" href="#/contact">Get a free quote</a></div></div>
+      <div class="art">${garmentSVG(s.a[0], s.a[1])}${garmentSVG(s.a[2], s.a[3])}</div></div>`).join('')}
+    <div class="dots">${slides.map((_, i) => `<button aria-label="Slide ${i + 1}" class="${i ? '' : 'on'}" onclick="goSlide(${i})"></button>`).join('')}</div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div class="upper">Shop by category</div><h2>Everything a dancer wears, with your logo on it</h2></div>
+    <div class="cat-grid">${cats}</div>
+  </div></section>
+
+  <section class="block" style="padding-top:0"><div class="wrap">
+    <div class="design-band"><div><div class="upper" style="font-size:.76rem;color:var(--rose);font-weight:600">New</div><h2>Design your own kit</h2>
+      <p>Pick a hoodie, tracksuit or crop top, add your logo and text, drag it into place and see exactly how it will look, front and back.</p>
+      <a class="btn" href="#/design">Start designing</a></div>
+      <div class="art">${garmentSVG('cropHoodie', '#b9a8e0', { label: 'Design your own' })}</div></div>
+  </div></section>
+
+  <section class="block soft"><div class="wrap">
+    <div class="values">
+      <div><div class="ico">✦</div><h3>Your logo, done properly</h3><p>Print or embroidery, placed where you want it. You approve a free mock-up before anything is made.</p></div>
+      <div><div class="ico">❤</div><h3>Sizes for every dancer</h3><p>Kids’ sizes from age 1, adult sizes up to 5XL, so the whole school matches.</p></div>
+      <div><div class="ico">☎</div><h3>A real person to help</h3><p>Not sure what to choose? Tell us about your school and we’ll suggest a kit that fits your budget.</p></div>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div class="upper">Shop by occasion</div><h2>Kit for every part of the dance year</h2></div>
+    <div class="occ-grid">${occ}</div>
+  </div></section>
+
+  <section class="block soft"><div class="wrap">
+    <div class="sec-head"><div class="upper">How it works</div><h2>From logo to finished kit in four steps</h2></div>
+    ${stepsHTML()}
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div class="upper">Quality garments</div><h2>Made on blanks from brands we trust</h2><p>We decorate proven dance and leisurewear from well-known garment brands.</p></div>
+    <div class="brands"><span>AWDis Just Hoods</span><span>AWDis Just Cool</span><span>TriDri</span><span>Tombo</span><span>SF</span><span>Finden &amp; Hales</span><span>BagBase</span></div>
+  </div></section>
+
+  <section class="block" style="padding-top:0"><div class="wrap">
+    <div class="cta-band"><div><h2>Kitting out a whole school?</h2><p>Send us your logo and class sizes. We’ll send back a free mock-up and a quote.</p></div><a class="btn" href="#/contact">Start a quote</a></div>
+  </div></section>`;
+}
+function stepsHTML(){
+  return `<div class="steps">
+    <div class="step"><h3>Choose your kit</h3><p>Pick garments, colours and sizes. Mix adult and kids’ sizes in one order.</p></div>
+    <div class="step"><h3>Add your logo</h3><p>Upload your logo and choose print or embroidery, front or back, and any names.</p></div>
+    <div class="step"><h3>Approve your mock-up</h3><p>We send you a free digital mock-up and a final price. Nothing is made until you say yes.</p></div>
+    <div class="step"><h3>We make and deliver</h3><p>Your kit is decorated to order and delivered to your studio or home.</p></div>
+  </div>`;
+}
+let slideTimer;
+function goSlide(i){
+  document.querySelectorAll('.slide').forEach((s, k) => s.classList.toggle('on', k === i));
+  document.querySelectorAll('.dots button').forEach((s, k) => s.classList.toggle('on', k === i));
+  clearInterval(slideTimer); slideTimer = setInterval(() => goSlide((i + 1) % 3), 6000);
+}
+
+function card(p){
+  const c = p.colours[0];
+  return `<a class="card" href="#/product/${encodeURIComponent(p.code)}">
+    <div class="img">${p.audience === 'kids' ? '<span class="tag">Kids</span>' : ''}${productPic(p, c)}</div>
+    <h3>${esc(p.name)}</h3><div class="meta">${esc(p.brand)} · ${esc(p.sizes)}</div>
+    <div class="price">${CONFIG.showPrices ? `From ${gbp(p.price + CONFIG.decoration.frontPrint.each)} <span class="meta">with your logo</span>` : '£TBA'}</div>
+    <div class="swatch-row">${p.colours.slice(0, 8).map(c => `<i style="background:${swBg(c)}" title="${esc(c.name)}"></i>`).join('')}${p.colours.length > 8 ? `<span class="meta">+${p.colours.length - 8}</span>` : ''}</div>
+  </a>`;
+}
+function shop(cat){
+  const list = P().filter(p => !cat || p.category === cat);
+  const title = cat ? (CATS.find(c => c.id === cat) || {}).name : 'Shop all dancewear';
+  return `<div class="page-head"><div class="wrap"><h1>${esc(title || 'Shop')}</h1><p>Every item can be printed or embroidered with your logo, names or text.</p></div></div>
+  <div class="wrap"><div class="filters"><a class="chip${cat ? '' : ' on'}" href="#/shop">All</a>${CATS.map(c => `<a class="chip${c.id === cat ? ' on' : ''}" href="#/shop/${c.id}">${esc(c.name)}</a>`).join('')}</div>
+  <div class="p-grid">${list.map(card).join('') || '<p class="empty">Nothing here yet.</p>'}</div></div>`;
+}
+
+let cur = null;   // product page state
+function product(code){
+  const p = byCode(code); if(!p) return notFound();
+  cur = { p, colour: 0, sizes: {}, decos: ['frontPrint'], name: '', notes: '' };
+  const decoOpts = p.category === 'bags' ? ['none', 'frontPrint', 'frontEmb', 'name'] : ['none', 'frontPrint', 'frontEmb', 'backPrint', 'name'];
+  return `<div class="wrap"><div class="pdp">
+    <div><div class="stage" id="stage">${productPic(p, p.colours[0])}</div></div>
+    <div>
+      <div class="crumbs"><a href="#/shop">Shop</a> / <a href="#/shop/${p.category}">${esc((CATS.find(c => c.id === p.category) || {}).name || '')}</a></div>
+      <h1>${esc(p.name)}</h1><div class="code">${esc(p.brand)} · Style ${esc(p.code)}</div>
+      <div class="from">${CONFIG.showPrices ? `From ${gbp(p.price)} <span class="meta" style="font-weight:400">plain · ${gbp(p.price + CONFIG.decoration.frontPrint.each)} with a printed logo</span>` : '£TBA <span class="meta" style="font-weight:400">· your price comes with your free mock-up</span>'}</div>
+      <p style="color:var(--ink-soft)">${esc(p.blurb)}</p>
+
+      <div class="opt"><h4>Colour <small id="colName">${esc(p.colours[0].name)}</small></h4>
+        <div class="swatches">${p.colours.map((c, i) => `<button type="button" class="${i ? '' : 'on'}" style="background:${swBg(c)}" title="${esc(c.name)}" aria-label="${esc(c.name)}" onclick="pickColour(${i})"></button>`).join('')}</div></div>
+
+      <div class="opt"><h4>Sizes and quantities <small>${esc(p.sizes)}</small></h4>
+        <div class="size-grid">${p.sizeList.map(s => `<label>${esc(s)}<input type="number" min="0" max="999" inputmode="numeric" placeholder="0" data-size="${esc(s)}" onfocus="this.select()" oninput="setSize(this)"></label>`).join('')}</div></div>
+
+      <div class="opt"><h4>Decoration</h4><div class="deco">
+        ${decoOpts.map(k => { const d = CONFIG.decoration[k]; const multi = k === 'backPrint' || k === 'name';
+          return `<label class="row"><input type="${multi ? 'checkbox' : 'radio'}" name="${multi ? 'deco_' + k : 'deco_front'}" value="${k}" ${k === 'frontPrint' ? 'checked' : ''} onchange="setDeco()"><div><b>${esc(d.label)}</b>${k === 'frontEmb' && CONFIG.setupFee.frontEmb && CONFIG.showPrices ? `<small>One-off setup ${gbp(CONFIG.setupFee.frontEmb)} per logo</small>` : ''}${k === 'name' ? '<small>Tell us the names in the notes below</small>' : ''}</div><span class="p">${d.each && CONFIG.showPrices ? '+' + gbp(d.each) : ''}</span></label>`; }).join('')}
+      </div>
+      <label class="field"><span>Notes (names, logo position, anything else)</span><textarea rows="3" id="notes" oninput="cur.notes=this.value" placeholder="e.g. Logo on the left chest. Names: Ava, Mia, Lily…"></textarea></label></div>
+
+      <div class="summary" id="summary"></div>
+      <div class="actions"><button class="btn" onclick="addToBasket()">Add to basket</button><a class="btn ghost" href="#/design/${encodeURIComponent(p.code)}">Design it yourself</a></div>
+
+      <div class="details">
+        <details open><summary>About this garment</summary><p>${esc(p.fabric || '')}</p>${p.colourNote ? `<p>${esc(p.colourNote)}</p>` : ''}${p.notes ? `<p>${esc(p.notes)}</p>` : ''}</details>
+        <details><summary>Your logo</summary><p>Upload your logo at checkout. Any clear image works; a PNG or vector file gives the sharpest result. We send you a free mock-up to approve before anything is made.</p></details>
+        ${!CONFIG.showPrices ? '' : ''}<details${CONFIG.showPrices ? '' : ' hidden'}><summary>Bulk pricing</summary><ul>${CONFIG.bulk.filter(t => t.off).map(t => `<li>${t.from}+ of one item: ${Math.round(t.off * 100)}% off</li>`).join('')}</ul></details>
+      </div>
+    </div>
+  </div></div>`;
+}
+function pickColour(i){
+  cur.colour = i; const c = cur.p.colours[i];
+  $('#stage').innerHTML = productPic(cur.p, c);
+  $('#colName').textContent = c.name;
+  document.querySelectorAll('.swatches button').forEach((b, k) => b.classList.toggle('on', k === i));
+}
+function setSize(el){ const v = Math.max(0, Math.min(999, parseInt(el.value, 10) || 0)); cur.sizes[el.dataset.size] = v; renderSummary(); }
+function setDeco(){
+  cur.decos = [...document.querySelectorAll('.deco input:checked')].map(i => i.value).filter(v => v !== 'none');
+  renderSummary();
+}
+function renderSummary(){
+  const qty = Object.values(cur.sizes).reduce((a, b) => a + b, 0), pl = priceLine(cur.p, Math.max(qty, 1), cur.decos);
+  $('#summary').innerHTML = `
+    <div class="line"><span>Price each (garment + decoration)</span><span>${gbp(pl.each)}</span></div>
+    <div class="line"><span>Quantity</span><span>${qty}</span></div>
+    ${pl.off && CONFIG.showPrices ? `<div class="line"><span>Bulk discount</span><span>−${Math.round(pl.off * 100)}%</span></div>` : ''}
+    ${pl.setup && CONFIG.showPrices ? `<div class="line"><span>Embroidery setup (one-off)</span><span>${gbp(pl.setup)}</span></div>` : ''}
+    <div class="line total"><span>Estimated total</span><span>${qty ? gbp(pl.total) : '—'}</span></div>
+    <div class="note">Final price confirmed with your free mock-up.</div>`;
+}
+function addToBasket(){
+  const sizes = Object.fromEntries(Object.entries(cur.sizes).filter(([, v]) => v > 0));
+  const qty = Object.values(sizes).reduce((a, b) => a + b, 0);
+  if(!qty){ toast('Add a quantity for at least one size'); return; }
+  basket.push({ code: cur.p.code, colour: cur.p.colours[cur.colour].name, hex: cur.p.colours[cur.colour].hex, accent: cur.p.colours[cur.colour].accent, sizes, qty, decos: cur.decos, notes: cur.notes });
+  saveBasket(); toast(`Added ${qty} × ${cur.p.name}`);
+}
+
+function basketView(){
+  if(!basket.length) return `<div class="page-head"><div class="wrap"><h1>Your basket</h1></div></div><div class="wrap empty"><p>Your basket is empty.</p><a class="btn" href="#/shop">Start shopping</a></div>`;
+  const rows = basket.map((i, k) => { const p = byCode(i.code), pl = priceLine(p, i.qty, i.decos);
+    return `<div class="b-item"><div class="th">${i.design ? Object.values(i.design.previews).map(src => `<img src="${src}" alt="Your design">`).join("") : garmentSVG(p.shape, i.hex, { label: p.name, accent: i.accent })}</div>
+      <div><h3>${esc(p.name)}</h3><p>${esc(i.colour)} · ${Object.entries(i.sizes).map(([s, n]) => `${esc(s)} × ${n}`).join(', ')}</p>
+      <p>${i.decos.length ? i.decos.map(d => esc(CONFIG.decoration[d].label)).join(' + ') : 'Plain'}</p>${i.notes ? `<p><i>“${esc(i.notes)}”</i></p>` : ''}${i.design ? `<p>Your design: ${esc(i.design.describe)}</p>` : ''}
+      <button class="rm" onclick="removeItem(${k})">Remove</button></div><div><b>${gbp(pl.total)}</b></div></div>`; }).join('');
+  return `<div class="page-head"><div class="wrap"><h1>Your basket</h1></div></div>
+  <div class="wrap two"><div>${rows}</div>
+  <div><div class="summary"><div class="line"><span>Items</span><span>${basket.reduce((s, i) => s + i.qty, 0)}</span></div>
+    <div class="line total"><span>Estimated total</span><span>${gbp(basketTotal())}</span></div>
+    <div class="note">${CONFIG.showPrices ? 'Includes bulk discounts. ' : ''}Delivery and your final price are confirmed with your free mock-up.</div></div>
+    <div class="actions"><a class="btn" href="#/checkout" style="flex:1">Checkout</a></div>
+    <p class="meta" style="margin-top:10px">Prefer to talk it through? <a href="#/contact">Ask for a quote instead</a>.</p></div></div>`;
+}
+function removeItem(k){ basket.splice(k, 1); saveBasket(); render(); }
+
+function orderForm(kind){
+  const isQuote = kind === 'quote';
+  return `<form id="orderForm" onsubmit="return sendOrder(event, '${kind}')">
+    <div class="form-grid">
+      <label class="field"><span>Your name *</span><input name="name" required autocomplete="name"></label>
+      <label class="field"><span>Email *</span><input name="email" type="email" required autocomplete="email"></label>
+      <label class="field"><span>Phone</span><input name="phone" type="tel" autocomplete="tel"></label>
+      <label class="field"><span>Dance school, team or event</span><input name="organisation"></label>
+      <label class="field"><span>Date you need it by</span><input name="needed_by" type="date"></label>
+      <label class="field"><span>Delivery postcode</span><input name="postcode" autocomplete="postal-code"></label>
+      <label class="field full"><span>Your logo (PNG, JPG, PDF or SVG)</span><input name="logo" type="file" accept=".png,.jpg,.jpeg,.pdf,.svg,.ai,.eps"></label>
+      <label class="field full"><span>${isQuote ? 'Tell us what you need *' : 'Anything else we should know?'}</span><textarea name="message" rows="5" ${isQuote ? 'required' : ''} placeholder="${isQuote ? 'e.g. 40 zoodies for our competition team, navy with our logo on the front, kids 5/6 to adult L' : ''}"></textarea></label>
+    </div>
+    <div class="actions"><button class="btn" type="submit">${isQuote ? 'Send quote request' : 'Send order for mock-up'}</button>
+    ${!isQuote ? `<button class="btn rose" type="button" onclick="payNow()" ${CONFIG.paymentUrl ? '' : 'disabled title="Online payment is not switched on yet"'}>Pay now</button>` : ''}</div>
+    ${!isQuote && !CONFIG.paymentUrl ? '<p class="meta" style="margin-top:8px">Online payment is coming soon. For now, send your order and we’ll reply with a mock-up, final price and a secure payment link.</p>' : ''}
+  </form><div id="formResult"></div>`;
+}
+function checkout(){
+  if(!basket.length) return basketView();
+  return `<div class="page-head"><div class="wrap"><h1>Checkout</h1><p>Send your order and we’ll reply with a free mock-up and your final price.</p></div></div>
+  <div class="wrap two"><div>${orderForm('order')}</div>
+  <div><div class="summary">${basket.map(i => { const p = byCode(i.code); return `<div class="line"><span>${i.qty} × ${esc(p.name)} (${esc(i.colour)})</span><span>${gbp(priceLine(p, i.qty, i.decos).total)}</span></div>`; }).join('')}
+  <div class="line total"><span>Estimated total</span><span>${gbp(basketTotal())}</span></div></div></div></div>`;
+}
+function orderText(kind, fd){
+  const lines = [`${kind === 'quote' ? 'QUOTE REQUEST' : 'ORDER'} from ${fd.get('name')} <${fd.get('email')}>`,
+    `Phone: ${fd.get('phone') || '-'}`, `Organisation: ${fd.get('organisation') || '-'}`, `Needed by: ${fd.get('needed_by') || '-'}`, `Postcode: ${fd.get('postcode') || '-'}`, ''];
+  if(kind !== 'quote'){ basket.forEach(i => { const p = byCode(i.code);
+    lines.push(`${i.qty} x ${p.code} ${p.name} - ${i.colour} - ${Object.entries(i.sizes).map(([s, n]) => s + ':' + n).join(', ')} - ${i.decos.map(d => CONFIG.decoration[d].label).join(' + ') || 'Plain'}${i.notes ? ' - Notes: ' + i.notes : ''}${i.design ? ' - DESIGN: ' + i.design.describe : ''}${CONFIG.showPrices ? ' - est. ' + gbp(priceLine(p, i.qty, i.decos).total) : ''}`); });
+    lines.push(CONFIG.showPrices ? `Estimated total: ${gbp(basketTotal())}` : 'Prices: TBA (to confirm with mock-up)', ''); }
+  lines.push('Message: ' + (fd.get('message') || '-'));
+  return lines.join('\n');
+}
+async function sendOrder(e, kind){
+  e.preventDefault();
+  const fd = new FormData(e.target), text = orderText(kind, fd);
+  fd.append('order_summary', text);
+  if(kind !== 'quote') basket.forEach((i, n) => { if(!i.design) return;
+    Object.entries(i.design.previews).forEach(([side, url]) => { const b = atob(url.split(',')[1]), a = new Uint8Array(b.length); for(let k = 0; k < b.length; k++) a[k] = b.charCodeAt(k);
+      fd.append('design_' + (n + 1) + '_' + side, new Blob([a], { type: 'image/jpeg' }), `design-${n + 1}-${side}.jpg`); });
+    designAssets(i.design.assets).forEach((a, k) => fd.append('design_' + (n + 1) + '_artwork_' + (k + 1), a.file, a.name)); }); fd.append('_subject', (kind === 'quote' ? 'Quote request' : 'New order') + ' - ' + (fd.get('organisation') || fd.get('name')));
+  const out = $('#formResult');
+  if(CONFIG.formEndpoint){
+    try {
+      const r = await fetch(CONFIG.formEndpoint, { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
+      if(!r.ok) throw new Error(r.status);
+      if(kind !== 'quote'){ basket = []; saveBasket(); }
+      location.hash = '#/thanks'; return false;
+    } catch(err){ out.innerHTML = `<div class="notice">Sorry, that didn’t send. ${CONFIG.email ? `Please email us at <a href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a>.` : 'Please try again later.'}</div>`; return false; }
+  }
+  if(CONFIG.previewOnly){   // shared preview copy: nothing is sent, just show what would be
+    out.innerHTML = `<div class="notice"><b>Online ordering opens soon.</b> Your request hasn’t been sent anywhere yet. Here’s a summary of what you chose:</div>
+      <pre style="white-space:pre-wrap;font-size:.82rem;background:var(--bg-soft);padding:14px;border-radius:10px">${esc(text)}</pre>`;
+    return false;
+  }
+  // no form service set up yet: show the request and offer to email it
+  out.innerHTML = `<div class="notice"><b>Preview mode:</b> this site isn’t connected to an inbox yet, so nothing was sent.
+    <div class="actions"><a class="btn" href="mailto:${esc(CONFIG.email)}?subject=${encodeURIComponent((kind === 'quote' ? 'Quote request' : 'Order') + ' - ' + (fd.get('organisation') || fd.get('name')))}&body=${encodeURIComponent(text + '\n\n(Please attach your logo to this email.)')}">Email this ${kind === 'quote' ? 'request' : 'order'} instead</a></div></div>
+    <pre style="white-space:pre-wrap;font-size:.82rem;background:var(--bg-soft);padding:14px;border-radius:10px">${esc(text)}</pre>`;
+  return false;
+}
+function payNow(){ if(CONFIG.paymentUrl) location.href = CONFIG.paymentUrl; }
+
+function contact(){
+  return `<div class="page-head"><div class="wrap"><h1>Get a free quote</h1><p>Tell us what you need and send your logo. We’ll reply with a mock-up and a price.</p></div></div>
+  <div class="wrap two"><div>${orderForm('quote')}</div>
+  <div><div class="summary"><h3 style="margin:0 0 8px;font-weight:500">What happens next</h3>
+    <p class="meta">We’ll look at your logo, suggest the best decoration for it, and send a free digital mock-up with your price. Nothing is made until you approve it.</p>
+    ${CONFIG.email ? `<p class="meta" style="margin-top:10px">Or email us: <a href="mailto:${esc(CONFIG.email)}">${esc(CONFIG.email)}</a></p>` : ''}</div></div></div>`;
+}
+function schools(){
+  return `<div class="page-head"><div class="wrap"><h1>Kit for dance schools</h1><p>Matching uniform and team kit for every class, with your logo.</p></div></div>
+  <div class="prose">
+    <h2>One order for the whole school</h2>
+    <p>Mix garments, colours and sizes in a single order: cropped hoodies for seniors, zoodies for the competition team, leggings and crop tops for class. Kids’ and adult sizes can go in the same order, and bulk discounts apply per item.</p>
+    <h2>Popular school kits</h2>
+    <ul><li><b>Class uniform:</b> a crop top, leggings and a hoodie with your logo.</li>
+      <li><b>Competition team:</b> matching zoodie and joggers (a tracksuit) with the team name on the back.</li>
+      <li><b>Show merch:</b> a show hoodie or tee with the show name and date, to sell to families.</li></ul>
+    <h2>Selling kit to your families</h2>
+    <p>Want parents to order and pay for their own child’s kit? Ask us about a school ordering page with your kit already chosen, so families just pick a size.</p>
+    <div class="actions"><a class="btn" href="#/contact">Get a school quote</a><a class="btn ghost" href="#/shop">Browse the range</a></div>
+  </div>`;
+}
+function how(){
+  return `<div class="page-head"><div class="wrap"><h1>How it works</h1><p>Simple, and you see everything before it’s made.</p></div></div>
+  <div class="wrap" style="padding:50px 20px 70px">${stepsHTML()}
+  <div class="prose" style="padding-left:0;padding-right:0"><h2>Print or embroidery?</h2>
+  <p><b>Printing</b> is great for bold, colourful logos and big designs on the back. <b>Embroidery</b> gives a premium, hard-wearing finish for smaller logos on the chest. Not sure? We’ll recommend what suits your logo when we send the mock-up.</p>
+  <div class="actions"><a class="btn" href="#/shop">Start shopping</a></div></div></div>`;
+}
+function faq(){
+  const qs = [
+    ['Is there a minimum order?', 'Personalised items can be ordered one at a time, and we offer bulk discounts on larger orders.'],
+    ['Can I see my design before it’s made?', 'Yes. Every order gets a free digital mock-up, and nothing is made until you approve it.'],
+    ['What file should my logo be?', 'A PNG with a transparent background or a vector file (SVG, PDF, AI or EPS) is best, but send whatever you have and we’ll let you know.'],
+    ['Do you do kids’ sizes?', 'Yes. Most hoodies, zoodies, joggers, tees and leggings come in kids’ sizes, so the whole school can match.'],
+    ['How long does it take?', 'It depends on the size of the order and the time of year. Tell us the date you need it by and we’ll confirm we can meet it before you order.'],
+  ];
+  return `<div class="page-head"><div class="wrap"><h1>FAQs</h1></div></div><div class="prose faq">${qs.map(q => `<details><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join('')}</div>`;
+}
+function thanks(){ return `<div class="wrap empty"><h1 style="font-weight:400">Thank you!</h1><p>We’ve got your request and will reply with a mock-up and price.</p><a class="btn" href="#/">Back to home</a></div>`; }
+function notFound(){ return `<div class="wrap empty"><p>Sorry, we couldn’t find that page.</p><a class="btn" href="#/shop">Go to the shop</a></div>`; }
+
+/* ---------- router ---------- */
+function render(){
+  const h = location.hash.replace(/^#\/?/, '').split('/');
+  let html;
+  switch(h[0]){
+    case '': html = home(); break;
+    case 'shop': html = shop(h[1]); break;
+    case 'product': html = product(decodeURIComponent(h[1] || '')); break;
+    case 'design': html = designView(decodeURIComponent(h.slice(1).join('/') || '')); break;
+    case 'basket': html = basketView(); break;
+    case 'checkout': html = checkout(); break;
+    case 'contact': html = contact(); break;
+    case 'schools': html = schools(); break;
+    case 'how': html = how(); break;
+    case 'faq': html = faq(); break;
+    case 'thanks': html = thanks(); break;
+    default: html = notFound();
+  }
+  $('#app').innerHTML = html;
+  clearInterval(slideTimer); if(h[0] === '') slideTimer = setInterval(() => goSlide((document.querySelectorAll('.slide.on')[0] ? [...document.querySelectorAll('.slide')].findIndex(s => s.classList.contains('on')) + 1 : 0) % 3), 6000);
+  if(h[0] === 'product' && cur) renderSummary();
+  if(h[0] === 'design') initDesign();
+  document.querySelectorAll('nav.main a').forEach(a => a.classList.toggle('on', location.hash.startsWith(a.getAttribute('href')) && a.getAttribute('href') !== '#/'));
+  $('#nav').classList.remove('open');
+  window.scrollTo(0, 0);
+}
+$('#brandMark').innerHTML = brandHTML(); $('#brandFoot').innerHTML = brandHTML();
+$('#announce').textContent = CONFIG.announce;
+if(CONFIG.email){ $('#footEmail').textContent = CONFIG.email; $('#footEmail').href = 'mailto:' + CONFIG.email; } else $('#footEmail').remove();
+$('#copy').textContent = `© ${new Date().getFullYear()} ${CONFIG.brand} ${CONFIG.brandAccent}`;
+window.addEventListener('hashchange', render);
+updateCount(); render();
+</script>
+</body>
+</html>
