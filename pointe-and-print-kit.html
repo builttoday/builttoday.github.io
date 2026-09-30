@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pointe &amp; Print — Social Media Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#141414; --soft:#5f5b58; --line:#e7e2de; --bg:#f7f3f0; --blush:#f3dfe0; --rose:#b8526f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Jost', Arial, sans-serif; padding: 34px 16px 70px; }
+  h1 { font-weight: 500; font-size: 1.7rem; text-align: center; margin: 0 0 6px; } h1 span { color: var(--rose); }
+  h2 { font-weight: 500; text-align: center; font-size: 1.2rem; margin: 40px 0 16px; }
+  p.lede { text-align: center; color: var(--soft); max-width: 640px; margin: 0 auto 8px; }
+  .note { max-width: 760px; margin: 18px auto; background: var(--blush); border-radius: 12px; padding: 14px 18px; font-size: .95rem; }
+  .bios { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .card, .post { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 22px; }
+  .post { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .post img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+  .post .body { padding: 16px; }
+  .num { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--rose); font-weight: 600; margin-bottom: 10px; }
+  .lbl { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--soft); font-weight: 600; margin: 14px 0 6px; }
+  textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 10px; font: .86rem/1.5 'Jost', Arial, sans-serif; background: var(--bg); resize: vertical; color: var(--ink); }
+  .copy, .dl { display: block; width: 100%; margin-top: 8px; padding: 10px; border-radius: 999px; font: 500 .82rem 'Jost', Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; text-align: center; cursor: pointer; text-decoration: none; }
+  .dl { background: var(--ink); color: #fff; border: 0; margin-top: 0; }
+  .copy { background: #fff; color: var(--ink); border: 1.5px solid var(--ink); }
+  .copy.done { background: var(--rose); border-color: var(--rose); color: #fff; }
+  footer { text-align: center; color: var(--soft); font-size: .85rem; margin-top: 44px; } footer a { color: var(--ink); }
+  @media (max-width: 700px) { .bios { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<h1>Pointe <span>&amp; Print</span> — Social Media Kit</h1>
+<p class="lede">Ten ready-to-post Facebook and Instagram posts. Download each picture, copy the caption, and post. Pictures are 1080×1080, the right size for both.</p>
+<div class="note"><b>Tip:</b> post two or three a week rather than all at once. On Instagram, put <b>https://builttoday.github.io/pointe-and-print/</b> in the bio so "link in bio" works.</div>
+
+<h2>Page bios</h2>
+<div class="bios">
+  <div class="card"><div class="lbl">Facebook page intro</div><textarea rows="5" readonly>Custom dancewear for dance schools, teams and dancers. Hoodies, zoodies, crop tops, shorts, leggings, tracksuits and dance bags with your logo, in adult and kids&#x27; sizes. Free mock-up with every order, no minimum.</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook page intro</button></div>
+  <div class="card"><div class="lbl">Instagram bio</div><textarea rows="5" readonly>🩰 Custom dancewear for dance schools &amp; teams
+💗 Your logo, your colours, kids&#x27; &amp; adult sizes
+✨ Free mock-up · no minimum
+👇 Get a free quote</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram bio</button></div>
+</div>
+
+<h2>Posts</h2>
+<div class="grid">
+<article class="post">
+  <img src="pp-kit/post-01.jpg" alt="Post 1: Your school. Your colours. Your kit." loading="lazy">
+  <div class="body">
+    <div class="num">Post 1 · Dance school kit</div>
+    <a class="dl" href="pp-kit/post-01.jpg" download="pointe-and-print-post-01.jpg">Download image</a>
+    <div class="lbl">Facebook caption</div><textarea rows="9" readonly>Your school. Your colours. Your kit. 💗
+
+Pointe &amp; Print makes custom dancewear for dance schools, teams and dancers: hoodies, zoodies, crop tops, shorts, leggings and tracksuits with your logo on, in adult and kids&#x27; sizes.
+
+Send us your logo and we&#x27;ll send back a free mock-up. Nothing is made until you say yes.
+
+👉 Get a free quote: https://builttoday.github.io/pointe-and-print/
+
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DanceTeacher #DanceStudio</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook caption</button>
+    <div class="lbl">Instagram caption</div><textarea rows="9" readonly>Your school. Your colours. Your kit. 💗
+
+Pointe &amp; Print makes custom dancewear for dance schools, teams and dancers: hoodies, zoodies, crop tops, shorts, leggings and tracksuits with your logo on, in adult and kids&#x27; sizes.
+
+Send us your logo and we&#x27;ll send back a free mock-up. Nothing is made until you say yes.
+
+👉 Link in bio for a free quote.
+.
+.
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DanceTeacher #DanceStudio #DanceLife #DanceMom #Ballet #DanceStudioLife</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram caption</button>
+  </div>
+</article>
+<article class="post">
+  <img src="pp-kit/post-02.jpg" alt="Post 2: Walk in as a team." loading="lazy">
+  <div class="body">
+    <div class="num">Post 2 · Competition season</div>
+    <a class="dl" href="pp-kit/post-02.jpg" download="pointe-and-print-post-02.jpg">Download image</a>
+    <div class="lbl">Facebook caption</div><textarea rows="9" readonly>Competition season is coming. ✨
+
+Walk in as a team with matching tracksuits, top and pants, in 14 two-tone team colours. Add your school name on the back and your logo on the chest, printed or embroidered.
+
+Adult and kids&#x27; sizes in the same order.
+
+👉 Get a free quote: https://builttoday.github.io/pointe-and-print/
+
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DanceCompetition #CompetitionTeam</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook caption</button>
+    <div class="lbl">Instagram caption</div><textarea rows="9" readonly>Competition season is coming. ✨
+
+Walk in as a team with matching tracksuits, top and pants, in 14 two-tone team colours. Add your school name on the back and your logo on the chest, printed or embroidered.
+
+Adult and kids&#x27; sizes in the same order.
+
+👉 Link in bio for a free quote.
+.
+.
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DanceCompetition #CompetitionTeam #DanceLife #DanceMom #Ballet #DanceStudioLife</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram caption</button>
+  </div>
+</article>
+<article class="post">
+  <img src="pp-kit/post-03.jpg" alt="Post 3: Their name, on their kit." loading="lazy">
+  <div class="body">
+    <div class="num">Post 3 · Made for one</div>
+    <a class="dl" href="pp-kit/post-03.jpg" download="pointe-and-print-post-03.jpg">Download image</a>
+    <div class="lbl">Facebook caption</div><textarea rows="9" readonly>Their name, on their kit. 🩰
+
+Personalise a crop top, hoodie, shorts or dance bag with a name or initials. There&#x27;s no minimum order, so it&#x27;s perfect for one dancer as a gift, or a whole class with a different name on each.
+
+👉 Get a free quote: https://builttoday.github.io/pointe-and-print/
+
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #PersonalisedGifts #DanceGifts</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook caption</button>
+    <div class="lbl">Instagram caption</div><textarea rows="9" readonly>Their name, on their kit. 🩰
+
+Personalise a crop top, hoodie, shorts or dance bag with a name or initials. There&#x27;s no minimum order, so it&#x27;s perfect for one dancer as a gift, or a whole class with a different name on each.
+
+👉 Link in bio for a free quote.
+.
+.
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #PersonalisedGifts #DanceGifts #DanceLife #DanceMom #Ballet #DanceStudioLife</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram caption</button>
+  </div>
+</article>
+<article class="post">
+  <img src="pp-kit/post-04.jpg" alt="Post 4: Design your own." loading="lazy">
+  <div class="body">
+    <div class="num">Post 4 · New</div>
+    <a class="dl" href="pp-kit/post-04.jpg" download="pointe-and-print-post-04.jpg">Download image</a>
+    <div class="lbl">Facebook caption</div><textarea rows="9" readonly>Design your own dance kit, right on our website. 🎨
+
+Pick a garment and colour, add your logo or text (stack the words, curve them, pick from 14 fonts), drag it into place, and see exactly how it will look on the front, back and sleeves.
+
+Then add it to your basket and we&#x27;ll send you a free mock-up to approve.
+
+👉 Get a free quote: https://builttoday.github.io/pointe-and-print/
+
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DesignYourOwn #CustomHoodie</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook caption</button>
+    <div class="lbl">Instagram caption</div><textarea rows="9" readonly>Design your own dance kit, right on our website. 🎨
+
+Pick a garment and colour, add your logo or text (stack the words, curve them, pick from 14 fonts), drag it into place, and see exactly how it will look on the front, back and sleeves.
+
+Then add it to your basket and we&#x27;ll send you a free mock-up to approve.
+
+👉 Link in bio for a free quote.
+.
+.
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DesignYourOwn #CustomHoodie #DanceLife #DanceMom #Ballet #DanceStudioLife</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram caption</button>
+  </div>
+</article>
+<article class="post">
+  <img src="pp-kit/post-05.jpg" alt="Post 5: The cropped hoodie." loading="lazy">
+  <div class="body">
+    <div class="num">Post 5 · Class favourite</div>
+    <a class="dl" href="pp-kit/post-05.jpg" download="pointe-and-print-post-05.jpg">Download image</a>
+    <div class="lbl">Facebook caption</div><textarea rows="9" readonly>The cropped hoodie: a studio favourite. 💕
+
+Soft, relaxed and cropped at the waist, so it sits perfectly over leggings or a crop top. Dusty Pink, Arctic White, Heather Grey or Jet Black, with your school logo on the front or a big design on the back.
+
+👉 Get a free quote: https://builttoday.github.io/pointe-and-print/
+
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #CroppedHoodie #DanceHoodie</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook caption</button>
+    <div class="lbl">Instagram caption</div><textarea rows="9" readonly>The cropped hoodie: a studio favourite. 💕
+
+Soft, relaxed and cropped at the waist, so it sits perfectly over leggings or a crop top. Dusty Pink, Arctic White, Heather Grey or Jet Black, with your school logo on the front or a big design on the back.
+
+👉 Link in bio for a free quote.
+.
+.
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #CroppedHoodie #DanceHoodie #DanceLife #DanceMom #Ballet #DanceStudioLife</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram caption</button>
+  </div>
+</article>
+<article class="post">
+  <img src="pp-kit/post-06.jpg" alt="Post 6: Packed and ready to dance." loading="lazy">
+  <div class="body">
+    <div class="num">Post 6 · Dance bags</div>
+    <a class="dl" href="pp-kit/post-06.jpg" download="pointe-and-print-post-06.jpg">Download image</a>
+    <div class="lbl">Facebook caption</div><textarea rows="9" readonly>Packed and ready to dance. 👜
+
+Our junior dance bag, shoe bags, barrel bags and totes can all have a name or your school logo on. A lovely gift for exams, shows and the first day of class.
+
+👉 Get a free quote: https://builttoday.github.io/pointe-and-print/
+
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DanceBag #DanceMum</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook caption</button>
+    <div class="lbl">Instagram caption</div><textarea rows="9" readonly>Packed and ready to dance. 👜
+
+Our junior dance bag, shoe bags, barrel bags and totes can all have a name or your school logo on. A lovely gift for exams, shows and the first day of class.
+
+👉 Link in bio for a free quote.
+.
+.
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DanceBag #DanceMum #DanceLife #DanceMom #Ballet #DanceStudioLife</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram caption</button>
+  </div>
+</article>
+<article class="post">
+  <img src="pp-kit/post-07.jpg" alt="Post 7: Kinder to the planet." loading="lazy">
+  <div class="body">
+    <div class="num">Post 7 · Sustainable</div>
+    <a class="dl" href="pp-kit/post-07.jpg" download="pointe-and-print-post-07.jpg">Download image</a>
+    <div class="lbl">Facebook caption</div><textarea rows="9" readonly>Kinder to the planet. 🌿
+
+Our Sustainable collection is made from recycled fabric: performance tees, leggings, a sports bra, jogger shorts, a holdall and a big recycled cotton canvas tote. The same great fit, with your logo on.
+
+👉 Get a free quote: https://builttoday.github.io/pointe-and-print/
+
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #SustainableFashion #RecycledFabric</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook caption</button>
+    <div class="lbl">Instagram caption</div><textarea rows="9" readonly>Kinder to the planet. 🌿
+
+Our Sustainable collection is made from recycled fabric: performance tees, leggings, a sports bra, jogger shorts, a holdall and a big recycled cotton canvas tote. The same great fit, with your logo on.
+
+👉 Link in bio for a free quote.
+.
+.
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #SustainableFashion #RecycledFabric #DanceLife #DanceMom #Ballet #DanceStudioLife</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram caption</button>
+  </div>
+</article>
+<article class="post">
+  <img src="pp-kit/post-08.jpg" alt="Post 8: Show merch they will love." loading="lazy">
+  <div class="body">
+    <div class="num">Post 8 · Show season</div>
+    <a class="dl" href="pp-kit/post-08.jpg" download="pointe-and-print-post-08.jpg">Download image</a>
+    <div class="lbl">Facebook caption</div><textarea rows="9" readonly>Show season merch that families actually want. ⭐
+
+A show hoodie or tee with the show name, date and cast list on the back makes a keepsake your dancers will wear for years. Tell us your show and we&#x27;ll design it with you.
+
+👉 Get a free quote: https://builttoday.github.io/pointe-and-print/
+
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DanceShow #ShowMerch</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook caption</button>
+    <div class="lbl">Instagram caption</div><textarea rows="9" readonly>Show season merch that families actually want. ⭐
+
+A show hoodie or tee with the show name, date and cast list on the back makes a keepsake your dancers will wear for years. Tell us your show and we&#x27;ll design it with you.
+
+👉 Link in bio for a free quote.
+.
+.
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DanceShow #ShowMerch #DanceLife #DanceMom #Ballet #DanceStudioLife</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram caption</button>
+  </div>
+</article>
+<article class="post">
+  <img src="pp-kit/post-09.jpg" alt="Post 9: From tots to seniors." loading="lazy">
+  <div class="body">
+    <div class="num">Post 9 · Kids sizes</div>
+    <a class="dl" href="pp-kit/post-09.jpg" download="pointe-and-print-post-09.jpg">Download image</a>
+    <div class="lbl">Facebook caption</div><textarea rows="9" readonly>From tots to seniors, the whole school can match. 🧡
+
+Kids&#x27; sizes from age 1 and adult sizes up to 5XL, and you can mix kids&#x27; and adult sizes in the same order. Zoodies, hoodies, tees, crop tops, leggings, shorts and joggers.
+
+👉 Get a free quote: https://builttoday.github.io/pointe-and-print/
+
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #KidsDance #DanceClass</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook caption</button>
+    <div class="lbl">Instagram caption</div><textarea rows="9" readonly>From tots to seniors, the whole school can match. 🧡
+
+Kids&#x27; sizes from age 1 and adult sizes up to 5XL, and you can mix kids&#x27; and adult sizes in the same order. Zoodies, hoodies, tees, crop tops, leggings, shorts and joggers.
+
+👉 Link in bio for a free quote.
+.
+.
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #KidsDance #DanceClass #DanceLife #DanceMom #Ballet #DanceStudioLife</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram caption</button>
+  </div>
+</article>
+<article class="post">
+  <img src="pp-kit/post-10.jpg" alt="Post 10: See it before it is made." loading="lazy">
+  <div class="body">
+    <div class="num">Post 10 · How it works</div>
+    <a class="dl" href="pp-kit/post-10.jpg" download="pointe-and-print-post-10.jpg">Download image</a>
+    <div class="lbl">Facebook caption</div><textarea rows="9" readonly>How it works: 💌
+1. Choose your kit, colours and sizes
+2. Send us your logo, or design it on our site
+3. We send you a free digital mock-up
+4. Nothing is made until you approve it
+
+No minimum order, and a real person to help you choose.
+
+👉 Get a free quote: https://builttoday.github.io/pointe-and-print/
+
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DanceSchoolUniform #SmallBusinessUK</textarea><button type="button" class="copy" onclick="copyText(this)">Copy facebook caption</button>
+    <div class="lbl">Instagram caption</div><textarea rows="9" readonly>How it works: 💌
+1. Choose your kit, colours and sizes
+2. Send us your logo, or design it on our site
+3. We send you a free digital mock-up
+4. Nothing is made until you approve it
+
+No minimum order, and a real person to help you choose.
+
+👉 Link in bio for a free quote.
+.
+.
+#PointeAndPrint #DanceSchool #Dancewear #DanceTeam #DanceKit #CustomDancewear #DanceUK #DanceSchoolUniform #SmallBusinessUK #DanceLife #DanceMom #Ballet #DanceStudioLife</textarea><button type="button" class="copy" onclick="copyText(this)">Copy instagram caption</button>
+  </div>
+</article>
+</div>
+
+<footer>Pointe &amp; Print · <a href="https://builttoday.github.io/pointe-and-print/">builttoday.github.io/pointe-and-print</a><br>Designed and built by <a href="https://builttoday.github.io/">BuiltToday</a></footer>
+<script>
+function copyText(btn) {
+  const ta = btn.previousElementSibling, label = btn.textContent;
+  const done = () => { btn.textContent = 'Copied'; btn.classList.add('done'); setTimeout(() => { btn.textContent = label; btn.classList.remove('done'); }, 1600); };
+  if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(done, () => { ta.select(); document.execCommand('copy'); done(); });
+  else { ta.select(); document.execCommand('copy'); done(); }
+}
+</script>
+</body>
+</html>
